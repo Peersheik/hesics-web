@@ -1,11 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/dom/SmoothScroll";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -68,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className={`${inter.variable} ${oswald.variable} dark`}>
       <body className="bg-[#040405] text-white font-sans antialiased overflow-x-hidden">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

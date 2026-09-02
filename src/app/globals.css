@@ -15,8 +15,12 @@
   --accent-light: #149a7c;
   --accent-dark:  #06382d;
   --accent-glow:  rgba(12, 116, 93, 0.25);
+  /* ── POWER — rare use only (see design rules) */
+  --power:        #8a1c1c;
+  --power-glow:   rgba(138, 28, 28, 0.3);
   --chapter-h:    100vh;
   --font-mono:    'Courier New', Courier, monospace;
+  --font-display: var(--font-oswald), 'Arial Narrow', system-ui, sans-serif;
 }
 
 /* ─── Base Reset ────────────────────────────────────────────────────── */
@@ -37,6 +41,19 @@ html {
 body {
   background-color: var(--bg);
   overflow-x: hidden;
+}
+
+/* ─── Film grain overlay — cinematic texture on dark backgrounds ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 /* ─── Lenis Smooth Scroll ───────────────────────────────────────────── */
@@ -63,21 +80,36 @@ html.lenis body {
 
 /* ─── Typography ────────────────────────────────────────────────────── */
 .font-display {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.03em;
 }
 
 .font-mono {
   font-family: var(--font-mono);
 }
 
-/* Large cinematic heading */
+/* Large cinematic heading — Oswald 900 condensed, movie-poster scale */
 .type-empire {
-  font-size: clamp(3rem, 10vw, 9rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 11rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+/* Huge tabular chapter number — KGF-poster scale */
+.type-chapter-num {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 14vw, 13rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: rgba(255,255,255,0.06);
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Chapter codename label */
@@ -92,6 +124,7 @@ html.lenis body {
 
 /* Body statement text */
 .type-statement {
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: clamp(1.1rem, 2.5vw, 1.75rem);
   font-weight: 300;
   letter-spacing: 0.01em;

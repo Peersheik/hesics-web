@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { ChapterShell, ChapterNumber, ChapterCTA } from "./ChapterPrimitives";
+import ArchitectNote from "@/components/guide/ArchitectNote";
 import { PROJECTS } from "@/data/projects";
 import { TESTIMONIALS } from "@/data/testimonials";
 
@@ -8,148 +10,85 @@ export default function C06_Vault() {
   const [activeProject, setActiveProject] = useState<number | null>(null);
 
   return (
-    <section
-      id="chapter-vault"
-      className="relative w-full"
-      aria-label="Chapter 06: The Vault — HESICS projects and case studies"
-    >
-      <div className="h-[500vh] relative">
-        <div className="sticky top-0 h-screen overflow-y-auto flex flex-col items-center justify-center px-6 py-24">
-          <p className="type-codename mb-8 opacity-70 text-center">
-            CHAPTER 06 — THE VAULT
-          </p>
+    <ChapterShell id={6} sectionId="chapter-vault" scrollHeight="520vh">
+      <ChapterNumber id={6} />
+      <div className="relative z-10 max-w-4xl w-full">
+        <p className="type-codename mb-5">06 — THE VAULT</p>
 
-          <div className="max-w-4xl w-full">
-            <h2
-              className="font-mono font-black text-center mb-2 text-white tracking-tight"
-              style={{ fontSize: "clamp(2rem, 6vw, 4rem)", letterSpacing: "-0.02em" }}
+        <h2 className="type-empire text-white mb-3">THE VAULT</h2>
+        <p className="font-mono text-xs mb-6" style={{ color: "var(--fg-subtle)", letterSpacing: "0.2em" }}>
+          {PROJECTS.length} CLASSIFIED FILES
+        </p>
+
+        <ArchitectNote chapterId={6} mode="transition" className="mb-10" />
+
+        {/* Project cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+          {PROJECTS.map((project, i) => (
+            <article
+              key={project.id}
+              className="border p-5 rounded-sm cursor-pointer transition-all duration-300"
+              style={{
+                borderColor: activeProject === i ? "var(--accent-light)" : "rgba(255,255,255,0.06)",
+                background: activeProject === i ? "rgba(12,116,93,0.05)" : "rgba(255,255,255,0.01)",
+              }}
+              onClick={() => setActiveProject(activeProject === i ? null : i)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={activeProject === i}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setActiveProject(activeProject === i ? null : i); }}
+              aria-label={`${project.name}: click to view case study`}
             >
-              PROJECT ARCHIVE
-            </h2>
-            <p className="font-mono text-xs text-empire-muted/50 tracking-widest text-center mb-12 uppercase">
-              {PROJECTS.length} classified files
-            </p>
-
-            {/* Project cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-              {PROJECTS.map((project, i) => (
-                <article
-                  key={project.id}
-                  className={`relative border p-6 rounded-sm cursor-pointer group transition-all duration-300 ${
-                    activeProject === i
-                      ? "border-empire-light/50 bg-empire-light/5"
-                      : "border-white/[0.06] bg-white/[0.02] hover:border-white/15"
-                  }`}
-                  onClick={() => setActiveProject(activeProject === i ? null : i)}
-                  aria-expanded={activeProject === i}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      setActiveProject(activeProject === i ? null : i);
-                    }
-                  }}
-                  aria-label={`Project ${project.code}: ${project.name}. Click to view case study.`}
-                >
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <p className="font-mono text-xs text-empire-light/60 tracking-widest mb-1">
-                        FILE {project.code}
-                      </p>
-                      <h3 className="font-mono text-base font-bold tracking-wide text-white">
-                        {project.name}
-                      </h3>
-                      <p className="font-mono text-xs text-empire-muted/50 mt-1">
-                        {project.client} · {project.industry}
-                      </p>
-                    </div>
-                    <span
-                      className={`font-mono text-empire-light/60 transition-transform duration-300 ${
-                        activeProject === i ? "rotate-45" : ""
-                      }`}
-                    >
-                      +
-                    </span>
-                  </div>
-
-                  {/* Expanded case study */}
-                  {activeProject === i && (
-                    <div className="border-t border-white/[0.06] pt-4 space-y-4">
-                      {[
-                        { label: "THE PROBLEM", content: project.problem },
-                        { label: "THE STRATEGY", content: project.strategy },
-                        { label: "THE BUILD", content: project.solution },
-                      ].map(({ label, content }) => (
-                        <div key={label}>
-                          <p className="font-mono text-xs font-bold tracking-[0.2em] text-empire-muted/60 mb-1">
-                            {label}
-                          </p>
-                          <p className="font-mono text-xs text-white/60 leading-relaxed">
-                            {content}
-                          </p>
-                        </div>
-                      ))}
-
-                      {/* Tech stack */}
-                      <div>
-                        <p className="font-mono text-xs font-bold tracking-[0.2em] text-empire-muted/60 mb-2">
-                          TECHNOLOGY
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technology.map((t, ti) => (
-                            <span
-                              key={ti}
-                              className="font-mono text-xs text-empire-light/70 border border-empire-light/20 px-2 py-1 rounded-sm"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Results */}
-                      {project.results.length > 0 && (
-                        <div>
-                          <p className="font-mono text-xs font-bold tracking-[0.2em] text-empire-muted/60 mb-2">
-                            THE RESULT
-                          </p>
-                          <div className="grid grid-cols-2 gap-2">
-                            {project.results.map((r, ri) => (
-                              <div key={ri} className="border border-white/[0.06] p-2 rounded-sm">
-                                <p className="font-mono text-sm font-bold text-white">{r.value}</p>
-                                <p className="font-mono text-xs text-empire-muted/50">{r.label}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </article>
-              ))}
-            </div>
-
-            {/* Testimonials */}
-            {TESTIMONIALS.length > 0 && (
-              <div className="border border-white/[0.06] bg-white/[0.01] p-8 rounded-sm text-center">
-                <p className="font-mono text-xs tracking-[0.3em] text-empire-light/50 mb-6 uppercase">
-                  CLIENT VOICES
-                </p>
-                <blockquote className="font-mono text-sm text-white/60 leading-relaxed italic mb-6 max-w-2xl mx-auto">
-                  "{TESTIMONIALS[0].quote}"
-                </blockquote>
-                <cite className="not-italic">
-                  <p className="font-mono text-sm font-bold text-white">{TESTIMONIALS[0].author}</p>
-                  <p className="font-mono text-xs text-empire-muted/50">
-                    {TESTIMONIALS[0].role} · {TESTIMONIALS[0].company}
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <p className="font-mono text-xs tracking-widest mb-1" style={{ color: "var(--accent)", opacity: 0.6, fontSize: "0.6rem" }}>
+                    FILE {project.code}
                   </p>
-                </cite>
+                  <h3 className="font-mono text-sm font-bold tracking-wide text-white">{project.name}</h3>
+                  <p className="font-mono text-xs mt-1" style={{ color: "var(--fg-subtle)" }}>
+                    {project.client} · {project.industry}
+                  </p>
+                </div>
+                <span className="font-mono" style={{ color: "var(--accent-light)", transform: activeProject === i ? "rotate(45deg)" : "none", transition: "transform 0.3s", display: "inline-block" }}>+</span>
               </div>
-            )}
-          </div>
+
+              {activeProject === i && (
+                <div className="border-t pt-4 space-y-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                  {[["THE PROBLEM", project.problem], ["THE STRATEGY", project.strategy], ["THE BUILD", project.solution]].map(([label, content]) => (
+                    <div key={label}>
+                      <p className="font-mono text-xs font-bold tracking-[0.2em] mb-1" style={{ color: "var(--fg-muted)", fontSize: "0.6rem" }}>{label}</p>
+                      <p className="font-mono text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.7rem" }}>{content}</p>
+                    </div>
+                  ))}
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {project.technology.map((t: string, ti: number) => (
+                      <span key={ti} className="font-mono text-xs border px-2 py-0.5 rounded-sm" style={{ borderColor: "rgba(12,116,93,0.25)", color: "var(--accent-light)", fontSize: "0.6rem" }}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+          ))}
         </div>
+
+        {/* Testimonials */}
+        {TESTIMONIALS.length > 0 && (
+          <div className="border p-7 rounded-sm text-center mb-10" style={{ borderColor: "rgba(255,255,255,0.05)", background: "rgba(255,255,255,0.01)" }}>
+            <p className="font-mono text-xs tracking-[0.25em] mb-5" style={{ color: "var(--accent)", opacity: 0.5, fontSize: "0.6rem" }}>
+              CLIENT VOICES
+            </p>
+            <blockquote className="font-mono text-sm leading-relaxed italic mb-5 max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.55)" }}>
+              "{TESTIMONIALS[0].quote}"
+            </blockquote>
+            <cite className="not-italic">
+              <p className="font-mono text-sm font-bold text-white">{TESTIMONIALS[0].author}</p>
+              <p className="font-mono text-xs" style={{ color: "var(--fg-subtle)" }}>{TESTIMONIALS[0].role} · {TESTIMONIALS[0].company}</p>
+            </cite>
+          </div>
+        )}
+
+        <ChapterCTA currentId={6} />
       </div>
-    </section>
+    </ChapterShell>
   );
 }

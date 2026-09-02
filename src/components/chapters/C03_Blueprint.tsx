@@ -1,77 +1,66 @@
 "use client";
 
-const MISSION_STEPS = [
-  { step: "UNDERSTAND", desc: "We learn your world before writing a line of code." },
-  { step: "DESIGN", desc: "We architect the system before touching a pixel." },
-  { step: "BUILD", desc: "We engineer with precision, not speed." },
-  { step: "AUTOMATE", desc: "We make the system work for you, not the other way around." },
-  { step: "GROW", desc: "We build for where you're going, not just where you are." },
+import { ChapterShell, ChapterNumber, ChapterCTA } from "./ChapterPrimitives";
+import ArchitectNote from "@/components/guide/ArchitectNote";
+
+const STEPS = [
+  { label: "UNDERSTAND", desc: "We learn your world before writing a line of code." },
+  { label: "DESIGN",     desc: "We architect the system before touching a pixel." },
+  { label: "BUILD",      desc: "We engineer with precision, not speed." },
+  { label: "AUTOMATE",   desc: "We make the system work for you." },
+  { label: "GROW",       desc: "Built for where you're going, not where you are." },
 ];
 
 export default function C03_Blueprint() {
   return (
-    <section
-      id="chapter-blueprint"
-      className="relative w-full"
-      aria-label="Chapter 03: The Blueprint — Vision and Mission"
-    >
-      <div className="h-[400vh] relative">
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6">
-          <p className="type-codename mb-8 opacity-70 text-center">
-            CHAPTER 03 — THE BLUEPRINT
+    <ChapterShell id={3} sectionId="chapter-blueprint" scrollHeight="400vh">
+      <ChapterNumber id={3} />
+      <div className="relative z-10 max-w-2xl">
+        <p className="type-codename mb-5">03 — THE BLUEPRINT</p>
+
+        <h2 className="type-empire text-white mb-6">THE BLUEPRINT</h2>
+
+        <ArchitectNote chapterId={3} mode="transition" className="mb-10" />
+
+        {/* Vision */}
+        <div className="mb-8">
+          <p className="font-mono text-xs tracking-[0.25em] mb-3" style={{ color: "var(--fg-subtle)", letterSpacing: "0.25em" }}>
+            OUR VISION
           </p>
-
-          <div className="max-w-3xl w-full">
-            {/* Vision */}
-            <div className="mb-16 text-center">
-              <p className="font-mono text-xs tracking-[0.3em] text-empire-muted/60 mb-4 uppercase">
-                OUR VISION
-              </p>
-              <p
-                className="font-mono text-white/85 leading-relaxed"
-                style={{ fontSize: "clamp(1rem, 2.2vw, 1.4rem)" }}
-              >
-                Build technology that makes businesses simpler, smarter and ready for what's next.
-              </p>
-            </div>
-
-            {/* Divider */}
-            <div className="flex justify-center mb-16">
-              <div className="w-px h-12 bg-gradient-to-b from-empire-light/60 to-transparent" />
-            </div>
-
-            {/* Mission */}
-            <div className="mb-16 text-center">
-              <p className="font-mono text-xs tracking-[0.3em] text-empire-muted/60 mb-4 uppercase">
-                OUR MISSION
-              </p>
-              <p
-                className="font-mono text-white/85 leading-relaxed"
-                style={{ fontSize: "clamp(1rem, 2.2vw, 1.4rem)" }}
-              >
-                Turn real-world problems into practical digital systems that create measurable impact.
-              </p>
-            </div>
-
-            {/* Process pathway */}
-            <div className="flex items-center justify-center gap-0 flex-wrap">
-              {MISSION_STEPS.map((item, i) => (
-                <div key={i} className="flex items-center">
-                  <div className="group flex flex-col items-center gap-2 px-3 py-3">
-                    <div className="w-2 h-2 rounded-full bg-empire-light/70" />
-                    <p className="font-mono text-xs font-bold tracking-[0.15em] text-white/80 text-center uppercase">
-                      {item.step}
-                    </p>
-                  </div>
-                  {i < MISSION_STEPS.length - 1 && (
-                    <div className="w-6 sm:w-10 h-px bg-empire-light/25 mb-4" />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="type-statement">
+            Build technology that makes businesses simpler, smarter and ready for what's next.
+          </p>
         </div>
+
+        {/* Mission */}
+        <div className="mb-10">
+          <p className="font-mono text-xs tracking-[0.25em] mb-3" style={{ color: "var(--fg-subtle)", letterSpacing: "0.25em" }}>
+            OUR MISSION
+          </p>
+          <p className="type-statement">
+            Turn real-world problems into practical digital systems that create measurable impact.
+          </p>
+        </div>
+
+        {/* Process steps */}
+        <div className="flex flex-wrap items-center gap-0 mb-10">
+          {STEPS.map((step, i) => (
+            <div key={i} className="flex items-center">
+              <div className="group flex flex-col items-center gap-2 px-3 py-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent-light)" }} />
+                <span className="font-mono text-xs font-bold tracking-[0.15em] text-white/70 text-center">
+                  {step.label}
+                </span>
+              </div>
+              {i < STEPS.length - 1 && (
+                <div className="w-4 sm:w-8 h-px mb-5" style={{ background: "var(--accent)", opacity: 0.2 }} />
+              )}
+            </div>
+          ))}
+        </div>
+
+        <ChapterCTA currentId={3} />
       </div>
-    </section>
+    </ChapterShell>
   );
 }
