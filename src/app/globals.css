@@ -1,0 +1,194 @@
+/* THE HESICS EMPIRE — Global Styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ────────────────────────────────────────────────── */
+:root {
+  --bg:           #040405;
+  --bg-surface:   #07080a;
+  --fg:           #ffffff;
+  --fg-muted:     #8a9099;
+  --fg-subtle:    #444c55;
+  --accent:       #0c745d;
+  --accent-light: #149a7c;
+  --accent-dark:  #06382d;
+  --accent-glow:  rgba(12, 116, 93, 0.25);
+  --chapter-h:    100vh;
+  --font-mono:    'Courier New', Courier, monospace;
+}
+
+/* ─── Base Reset ────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ─── Lenis Smooth Scroll ───────────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Large cinematic heading */
+.type-empire {
+  font-size: clamp(3rem, 10vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+/* Chapter codename label */
+.type-codename {
+  font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: var(--accent-light);
+}
+
+/* Body statement text */
+.type-statement {
+  font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.75);
+}
+
+/* ─── Glass Panels ──────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-accent {
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    rgba(12, 116, 93, 0.12) 0%,
+    rgba(4, 4, 5, 0.5) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(12, 116, 93, 0.2);
+}
+
+.glass-dark {
+  background: rgba(4, 4, 5, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Gradient Text ─────────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #a3e6d8 50%, #0c745d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-muted {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Accent Line ───────────────────────────────────────────────────── */
+.accent-line {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--accent-light) 0%, transparent 100%);
+}
+
+/* ─── Chapter Layout ────────────────────────────────────────────────── */
+.chapter-container {
+  position: relative;
+  width: 100%;
+}
+
+.chapter-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.chapter-content {
+  pointer-events: auto;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: rgba(12, 116, 93, 0.35);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(12, 116, 93, 0.7); }
+
+/* ─── Reduced Motion ────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: white;
+}
