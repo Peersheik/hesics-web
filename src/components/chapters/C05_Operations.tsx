@@ -1,62 +1,47 @@
 "use client";
-
-import { ChapterShell, ChapterNumber, ChapterCTA } from "./ChapterPrimitives";
-import ArchitectNote from "@/components/guide/ArchitectNote";
+import { ChapterShell, ChapterNum, NextDistrict, DistrictTag } from "./ChapterPrimitives";
 
 const PHASES = [
-  { code: "01", name: "DISCOVER",    desc: "Understand the real problem, not the assumed one." },
-  { code: "02", name: "STRATEGIZE",  desc: "Map the system before building it." },
-  { code: "03", name: "BUILD",       desc: "Engineer with precision. No shortcuts." },
-  { code: "04", name: "TEST",        desc: "Break it before your users do." },
-  { code: "05", name: "DEPLOY",      desc: "Ship with confidence, not hope." },
-  { code: "06", name: "GROW",        desc: "The system improves over time." },
+  { code:"01", name:"DISCOVER",   desc:"Understand the real problem, not the assumed one." },
+  { code:"02", name:"STRATEGIZE", desc:"Map the system before building it." },
+  { code:"03", name:"BUILD",      desc:"Engineer with precision. No shortcuts." },
+  { code:"04", name:"TEST",       desc:"Break it before your users do." },
+  { code:"05", name:"DEPLOY",     desc:"Ship with confidence." },
+  { code:"06", name:"GROW",       desc:"The system improves over time." },
 ];
 
 export default function C05_Operations() {
   return (
     <ChapterShell id={5} sectionId="chapter-operations" scrollHeight="420vh">
-      <ChapterNumber id={5} />
-      <div className="relative z-10 max-w-3xl w-full">
-        <p className="type-codename mb-5">05 — OPERATIONS</p>
-
-        <h2 className="type-empire text-white mb-3">OPERATIONS</h2>
-        <p className="font-mono text-sm mb-6" style={{ color: "var(--fg-muted)", letterSpacing: "0.12em" }}>
-          Six phases. No exceptions.
-        </p>
-
-        <ArchitectNote chapterId={5} mode="transition" className="mb-10" />
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-12">
-          {PHASES.map((phase) => (
-            <article
-              key={phase.code}
-              className="border p-5 rounded-sm transition-colors duration-300 group"
-              style={{ borderColor: "rgba(255,255,255,0.05)", background: "rgba(255,255,255,0.02)" }}
-              aria-label={`Phase ${phase.code}: ${phase.name}`}
-            >
-              <p className="font-mono text-xs tracking-widest mb-2" style={{ color: "var(--accent)", opacity: 0.6 }}>
-                {phase.code}
-              </p>
-              <h3 className="font-mono text-sm font-bold tracking-[0.12em] text-white mb-2">
-                {phase.name}
-              </h3>
-              <p className="font-mono text-xs leading-relaxed" style={{ color: "var(--fg-muted)", fontSize: "0.68rem" }}>
-                {phase.desc}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-4 mb-10">
-          <div className="h-px flex-1" style={{ background: "linear-gradient(to right, transparent, var(--accent))", opacity: 0.15 }} />
-          <span className="font-mono text-xs tracking-[0.25em]" style={{ color: "var(--fg-subtle)", fontSize: "0.6rem" }}>
-            MISSION CONTROL ACTIVE
-          </span>
-          <div className="h-px flex-1" style={{ background: "linear-gradient(to left, transparent, var(--accent))", opacity: 0.15 }} />
-        </div>
-
-        <ChapterCTA currentId={5} />
-      </div>
+      {() => (
+        <>
+          <ChapterNum id={5} />
+          <div className="relative z-10 max-w-4xl w-full">
+            <DistrictTag id={5} label="OPERATIONS" />
+            <h2 style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)", fontSize:"clamp(4rem,11vw,11rem)", lineHeight:0.88, letterSpacing:"0.02em", color:"#ffffff", marginBottom:"0.5rem" }}>
+              HOW WE<br />OPERATE
+            </h2>
+            <p style={{ fontFamily:"var(--font-body,'DM Sans',sans-serif)", fontSize:"clamp(1rem,1.8vw,1.3rem)", color:"rgba(255,255,255,0.4)", marginBottom:"2.5rem" }}>
+              Six phases. No exceptions.
+            </p>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))", gap:"1rem", marginBottom:"2.5rem" }}>
+              {PHASES.map((ph) => (
+                <article key={ph.code}
+                  style={{ border:"1px solid rgba(0,229,200,0.1)", padding:"1.5rem", background:"rgba(0,229,200,0.02)" }}>
+                  <p className="font-mono" style={{ fontSize:"0.65rem", color:"var(--neon,#00e5c8)", opacity:0.6, marginBottom:"0.5rem" }}>{ph.code}</p>
+                  <h3 style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)", fontSize:"1.8rem", letterSpacing:"0.06em", color:"#ffffff", marginBottom:"0.5rem" }}>
+                    {ph.name}
+                  </h3>
+                  <p style={{ fontFamily:"var(--font-body,'DM Sans',sans-serif)", fontSize:"0.9rem", color:"rgba(255,255,255,0.45)", lineHeight:1.55 }}>
+                    {ph.desc}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <NextDistrict currentId={5} />
+          </div>
+        </>
+      )}
     </ChapterShell>
   );
 }

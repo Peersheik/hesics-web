@@ -1,56 +1,82 @@
 "use client";
-
-import { ChapterShell, ChapterNumber, ChapterCTA } from "./ChapterPrimitives";
-import ArchitectNote from "@/components/guide/ArchitectNote";
+import { ChapterShell, ChapterNum, NextDistrict, DistrictTag } from "./ChapterPrimitives";
 
 const PROBLEMS = [
   "Too many tools. None of them talking to each other.",
-  "Too much manual work. Not enough thinking.",
-  "Digital presence that doesn't convert.",
-  "AI hype with no practical application.",
-  "Missed compounding value from disconnected systems.",
+  "Too much manual work. Not enough actual thinking.",
+  "Digital presence that looks good but converts nothing.",
+  "AI hype with zero practical application.",
+  "Disconnected systems bleeding compounding value every day.",
 ];
 
 export default function C02_Origin() {
   return (
-    <ChapterShell id={2} sectionId="chapter-origin" scrollHeight="380vh">
-      <ChapterNumber id={2} />
-      <div className="relative z-10 max-w-2xl">
-        <p className="type-codename mb-5">02 — THE ORIGIN</p>
+    <ChapterShell id={2} sectionId="chapter-origin" scrollHeight="400vh">
+      {() => (
+        <>
+          <ChapterNum id={2} />
+          <div className="relative z-10 max-w-3xl">
+            <DistrictTag id={2} label="THE ORIGIN" />
 
-        <h2 className="type-empire text-white mb-6">THE ORIGIN</h2>
+            <h2 style={{
+              fontFamily: "var(--font-display,'Bebas Neue',Impact,sans-serif)",
+              fontSize: "clamp(4rem,11vw,11rem)",
+              lineHeight: 0.88,
+              letterSpacing: "0.02em",
+              color: "#ffffff",
+              marginBottom: "2rem",
+            }}>
+              WHY WE<br />EXIST
+            </h2>
 
-        <ArchitectNote chapterId={2} mode="transition" className="mb-10" />
+            <div style={{ marginBottom: "2.5rem" }}>
+              <p className="font-mono mb-6"
+                style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" }}>
+                THE PROBLEMS WE WERE BUILT TO SOLVE
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                {PROBLEMS.map((p, i) => (
+                  <div key={i} style={{ display: "flex", gap: "1.5rem", alignItems: "flex-start" }}>
+                    <span className="font-mono"
+                      style={{ fontSize: "0.7rem", color: "var(--neon,#00e5c8)", opacity: 0.6, flexShrink: 0, marginTop: "0.2rem" }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p style={{
+                      fontFamily: "var(--font-body,'DM Sans',sans-serif)",
+                      fontSize: "clamp(1rem,1.8vw,1.3rem)",
+                      color: "rgba(255,255,255,0.65)",
+                      lineHeight: 1.5,
+                    }}>
+                      {p}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-        <div className="mb-10 space-y-3">
-          <p className="font-mono text-xs tracking-[0.2em] mb-4" style={{ color: "var(--fg-muted)", letterSpacing: "0.2em" }}>
-            THE PROBLEMS WE WERE BUILT TO SOLVE
-          </p>
-          {PROBLEMS.map((p, i) => (
-            <div key={i} className="flex items-start gap-4">
-              <span className="font-mono text-xs tabular-nums shrink-0" style={{ color: "var(--accent)", opacity: 0.6 }}>
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="font-mono text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                "{p}"
+            <div style={{ borderLeft: "3px solid var(--neon,#00e5c8)", paddingLeft: "1.5rem", marginBottom: "2rem" }}>
+              <p style={{
+                fontFamily: "var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                fontSize: "clamp(1.8rem,4vw,3.5rem)",
+                letterSpacing: "0.05em",
+                color: "#ffffff",
+              }}>
+                TECHNOLOGY SHOULD FEEL SIMPLER.
+              </p>
+              <p style={{
+                fontFamily: "var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                fontSize: "clamp(1.8rem,4vw,3.5rem)",
+                letterSpacing: "0.05em",
+                color: "var(--neon,#00e5c8)",
+              }}>
+                WE DON'T JUST BUILD. WE SOLVE.
               </p>
             </div>
-          ))}
-        </div>
 
-        <div className="mb-10">
-          <div className="h-px w-16 mb-6" style={{ background: "var(--accent)", opacity: 0.3 }} />
-          <p className="type-statement mb-3">Technology should feel simpler.</p>
-          <p className="font-mono font-bold text-xl tracking-[0.15em] text-white">
-            WE DON'T JUST BUILD.
-          </p>
-          <p className="font-mono font-bold text-xl tracking-[0.15em]" style={{ color: "var(--accent-light)" }}>
-            WE SOLVE.
-          </p>
-        </div>
-
-        <ChapterCTA currentId={2} />
-      </div>
+            <NextDistrict currentId={2} />
+          </div>
+        </>
+      )}
     </ChapterShell>
   );
 }

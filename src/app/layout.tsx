@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { DM_Sans, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/dom/SmoothScroll";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
-const oswald = Oswald({
+const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-oswald",
+  weight: ["400"],
+  variable: "--font-bebas",
   display: "swap",
 });
 
@@ -20,63 +21,36 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#040405",
+  themeColor: "#070810",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hesics.com"),
-  title: "HESICS | THE EMPIRE — Digital Systems For What's Next",
-  description:
-    "HESICS builds digital empires. Enterprise web engineering, applied AI automation, scalable SaaS architecture, and precision digital marketing — all under one roof.",
-  keywords: [
-    "HESICS",
-    "Web Development",
-    "AI Automation",
-    "SaaS Development",
-    "Digital Marketing",
-    "Digital Systems",
-    "Technology Company",
-    "Enterprise Architecture",
-  ],
+  title: "HESICS — Digital Systems For What's Next",
+  description: "HESICS builds digital empires. Web engineering, AI automation, SaaS and precision digital marketing — all under one roof.",
+  keywords: ["HESICS", "Web Development", "AI Automation", "SaaS", "Digital Marketing"],
   authors: [{ name: "HESICS Technologies", url: "https://hesics.com" }],
   creator: "HESICS Technologies",
-  publisher: "HESICS Technologies",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://hesics.com",
     siteName: "HESICS",
-    title: "HESICS | THE EMPIRE — Digital Systems For What's Next",
-    description:
-      "Enter the HESICS Empire. Web, AI, SaaS and digital marketing — engineered for impact.",
+    title: "HESICS — Digital Systems For What's Next",
+    description: "Enter the HESICS Empire. Web, AI, SaaS — engineered for impact.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HESICS | THE EMPIRE",
-    description:
-      "Enter the HESICS Empire. Digital systems engineered for what's next.",
+    title: "HESICS",
+    description: "Digital systems engineered for what's next.",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${oswald.variable} dark`}>
-      <body className="bg-[#040405] text-white font-sans antialiased overflow-x-hidden">
+    <html lang="en" className={`${dmSans.variable} ${bebasNeue.variable} dark`}>
+      <body className="overflow-x-hidden" style={{ background: "#070810", color: "#fff" }}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

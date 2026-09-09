@@ -1,66 +1,44 @@
 "use client";
+import { ChapterShell, ChapterNum, NextDistrict, DistrictTag } from "./ChapterPrimitives";
 
-import { ChapterShell, ChapterNumber, ChapterCTA } from "./ChapterPrimitives";
-import ArchitectNote from "@/components/guide/ArchitectNote";
-
-const STEPS = [
-  { label: "UNDERSTAND", desc: "We learn your world before writing a line of code." },
-  { label: "DESIGN",     desc: "We architect the system before touching a pixel." },
-  { label: "BUILD",      desc: "We engineer with precision, not speed." },
-  { label: "AUTOMATE",   desc: "We make the system work for you." },
-  { label: "GROW",       desc: "Built for where you're going, not where you are." },
-];
+const STEPS = ["UNDERSTAND","DESIGN","BUILD","AUTOMATE","GROW"];
 
 export default function C03_Blueprint() {
   return (
-    <ChapterShell id={3} sectionId="chapter-blueprint" scrollHeight="400vh">
-      <ChapterNumber id={3} />
-      <div className="relative z-10 max-w-2xl">
-        <p className="type-codename mb-5">03 — THE BLUEPRINT</p>
-
-        <h2 className="type-empire text-white mb-6">THE BLUEPRINT</h2>
-
-        <ArchitectNote chapterId={3} mode="transition" className="mb-10" />
-
-        {/* Vision */}
-        <div className="mb-8">
-          <p className="font-mono text-xs tracking-[0.25em] mb-3" style={{ color: "var(--fg-subtle)", letterSpacing: "0.25em" }}>
-            OUR VISION
-          </p>
-          <p className="type-statement">
-            Build technology that makes businesses simpler, smarter and ready for what's next.
-          </p>
-        </div>
-
-        {/* Mission */}
-        <div className="mb-10">
-          <p className="font-mono text-xs tracking-[0.25em] mb-3" style={{ color: "var(--fg-subtle)", letterSpacing: "0.25em" }}>
-            OUR MISSION
-          </p>
-          <p className="type-statement">
-            Turn real-world problems into practical digital systems that create measurable impact.
-          </p>
-        </div>
-
-        {/* Process steps */}
-        <div className="flex flex-wrap items-center gap-0 mb-10">
-          {STEPS.map((step, i) => (
-            <div key={i} className="flex items-center">
-              <div className="group flex flex-col items-center gap-2 px-3 py-2">
-                <div className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--accent-light)" }} />
-                <span className="font-mono text-xs font-bold tracking-[0.15em] text-white/70 text-center">
-                  {step.label}
-                </span>
-              </div>
-              {i < STEPS.length - 1 && (
-                <div className="w-4 sm:w-8 h-px mb-5" style={{ background: "var(--accent)", opacity: 0.2 }} />
-              )}
+    <ChapterShell id={3} sectionId="chapter-blueprint" scrollHeight="380vh">
+      {() => (
+        <>
+          <ChapterNum id={3} />
+          <div className="relative z-10 max-w-3xl">
+            <DistrictTag id={3} label="THE BLUEPRINT" />
+            <h2 style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)", fontSize:"clamp(4rem,11vw,11rem)", lineHeight:0.88, letterSpacing:"0.02em", color:"#ffffff", marginBottom:"2rem" }}>
+              THE<br />BLUEPRINT
+            </h2>
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"2rem", marginBottom:"2.5rem" }}>
+              {[["VISION","Build technology that makes businesses simpler, smarter, and ready for what's next."],
+                ["MISSION","Turn real-world problems into practical digital systems that create measurable impact."]
+              ].map(([label, text]) => (
+                <div key={label} style={{ borderTop:"1px solid rgba(0,229,200,0.2)", paddingTop:"1.2rem" }}>
+                  <p className="font-mono" style={{ fontSize:"0.65rem", letterSpacing:"0.2em", color:"var(--neon,#00e5c8)", marginBottom:"0.75rem" }}>{label}</p>
+                  <p style={{ fontFamily:"var(--font-body,'DM Sans',sans-serif)", fontSize:"clamp(1rem,1.6vw,1.2rem)", color:"rgba(255,255,255,0.65)", lineHeight:1.6 }}>{text}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-
-        <ChapterCTA currentId={3} />
-      </div>
+            <div style={{ display:"flex", alignItems:"center", gap:"0", marginBottom:"2rem" }}>
+              {STEPS.map((s, i) => (
+                <div key={s} style={{ display:"flex", alignItems:"center" }}>
+                  <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:"0.5rem" }}>
+                    <div style={{ width:8, height:8, borderRadius:"50%", background:"var(--neon,#00e5c8)" }} />
+                    <span className="font-mono" style={{ fontSize:"0.6rem", letterSpacing:"0.12em", color:"rgba(255,255,255,0.5)", textTransform:"uppercase" }}>{s}</span>
+                  </div>
+                  {i < STEPS.length-1 && <div style={{ width:"clamp(2rem,4vw,5rem)", height:1, background:"rgba(0,229,200,0.2)", margin:"0 0.25rem", marginBottom:"1.2rem" }} />}
+                </div>
+              ))}
+            </div>
+            <NextDistrict currentId={3} />
+          </div>
+        </>
+      )}
     </ChapterShell>
   );
 }

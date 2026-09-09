@@ -1,29 +1,51 @@
-/* THE HESICS EMPIRE — Global Styles */
+/* ═══════════════════════════════════════════════════════════════════
+   HESICS — GTA EDITION
+   Full dark-city HUD aesthetic. Bebas Neue display, DM Sans body.
+   ═══════════════════════════════════════════════════════════════════ */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design Tokens ────────────────────────────────────────────────── */
+
+/* ── Design tokens ──────────────────────────────────────────────────── */
 :root {
-  --bg:           #040405;
-  --bg-surface:   #07080a;
-  --fg:           #ffffff;
-  --fg-muted:     #8a9099;
-  --fg-subtle:    #444c55;
-  --accent:       #0c745d;
-  --accent-light: #149a7c;
-  --accent-dark:  #06382d;
-  --accent-glow:  rgba(12, 116, 93, 0.25);
-  /* ── POWER — rare use only (see design rules) */
-  --power:        #8a1c1c;
-  --power-glow:   rgba(138, 28, 28, 0.3);
-  --chapter-h:    100vh;
+  /* Core colours */
+  --bg:          #070810;
+  --bg-2:        #0c0e1a;
+  --fg:          #ffffff;
+  --fg-muted:    #8892a4;
+  --fg-subtle:   #3d4557;
+
+  /* Neon teal — HUD primary */
+  --neon:        #00e5c8;
+  --neon-dim:    rgba(0, 229, 200, 0.15);
+  --neon-glow:   rgba(0, 229, 200, 0.35);
+
+  /* Gold — waypoint / warning */
+  --gold:        #f5c518;
+  --gold-dim:    rgba(245, 197, 24, 0.12);
+
+  /* Red — danger / power */
+  --red:         #e62020;
+  --red-dim:     rgba(230, 32, 32, 0.12);
+
+  /* Legacy compat */
+  --accent:       var(--neon);
+  --accent-light: var(--neon);
+  --power:        var(--red);
+  --power-glow:   rgba(230, 32, 32, 0.3);
+
+  /* Fonts */
+  --font-display: var(--font-bebas), 'Impact', system-ui, sans-serif;
+  --font-body:    var(--font-dm-sans), system-ui, sans-serif;
   --font-mono:    'Courier New', Courier, monospace;
-  --font-display: var(--font-oswald), 'Arial Narrow', system-ui, sans-serif;
+
+  /* Scanline opacity */
+  --scanline:    0.025;
 }
 
-/* ─── Base Reset ────────────────────────────────────────────────────── */
+/* ── Reset ───────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -31,157 +53,155 @@
 }
 
 html {
-  background-color: var(--bg);
+  background: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-family: var(--font-body);
 }
 
 body {
-  background-color: var(--bg);
+  background: var(--bg);
   overflow-x: hidden;
+  font-family: var(--font-body);
 }
 
-/* ─── Film grain overlay — cinematic texture on dark backgrounds ─── */
-body::before {
+/* ── Lenis ────────────────────────────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* ── Scanline overlay (subtle CRT feel) ───────────────────────────────── */
+body::after {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 9998;
   pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.04) 3px,
+    rgba(0,0,0,0.04) 4px
+  );
+  opacity: var(--scanline);
 }
 
-/* ─── Lenis Smooth Scroll ───────────────────────────────────────────── */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
+/* ── Typography ────────────────────────────────────────────────────────── */
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* ─── Typography ────────────────────────────────────────────────────── */
-.font-display {
+/* MASSIVE display — Bebas Neue, movie-title scale */
+.type-display {
   font-family: var(--font-display);
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  font-size: clamp(5rem, 18vw, 18rem);
+  font-weight: 400; /* Bebas Neue is single-weight */
+  letter-spacing: 0.02em;
+  line-height: 0.85;
+  text-transform: uppercase;
 }
 
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-/* Large cinematic heading — Oswald 900 condensed, movie-poster scale */
-.type-empire {
+/* Large chapter title */
+.type-title {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 12vw, 11rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
+  font-size: clamp(3.5rem, 10vw, 10rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
   line-height: 0.88;
   text-transform: uppercase;
 }
 
-/* Huge tabular chapter number — KGF-poster scale */
-.type-chapter-num {
-  font-family: var(--font-mono);
-  font-size: clamp(4rem, 14vw, 13rem);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.06em;
-  line-height: 1;
-  color: rgba(255,255,255,0.06);
-  user-select: none;
-  pointer-events: none;
-}
-
-/* Chapter codename label */
-.type-codename {
-  font-size: clamp(0.6rem, 1.2vw, 0.75rem);
-  font-weight: 600;
-  letter-spacing: 0.25em;
+/* Medium section heading */
+.type-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 5rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 0.9;
   text-transform: uppercase;
-  font-family: var(--font-mono);
-  color: var(--accent-light);
 }
 
-/* Body statement text */
-.type-statement {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+/* GTA HUD label — small mono ALL CAPS */
+.type-hud {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--neon);
+}
+
+/* Body copy */
+.type-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   font-weight: 300;
-  letter-spacing: 0.01em;
-  line-height: 1.4;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Large body statement */
+.type-statement {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.45;
   color: rgba(255,255,255,0.75);
 }
 
-/* ─── Glass Panels ──────────────────────────────────────────────────── */
-.glass {
-  background: rgba(255, 255, 255, 0.03);
+/* Neon label */
+.type-neon {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--neon);
+  text-shadow: 0 0 12px var(--neon-glow);
+}
+
+/* Legacy compat */
+.type-empire { font-family: var(--font-display); font-size: clamp(4rem, 12vw, 12rem); font-weight: 400; letter-spacing: 0.02em; line-height: 0.88; text-transform: uppercase; }
+.type-codename { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--neon); }
+.type-statement { font-family: var(--font-body); font-size: clamp(1.1rem, 2.5vw, 1.75rem); font-weight: 300; line-height: 1.5; color: rgba(255,255,255,0.75); }
+
+/* ── Neon glow effects ────────────────────────────────────────────────── */
+.neon-text {
+  color: var(--neon);
+  text-shadow:
+    0 0 10px rgba(0,229,200,0.8),
+    0 0 30px rgba(0,229,200,0.4),
+    0 0 60px rgba(0,229,200,0.2);
+}
+
+.neon-border {
+  border-color: var(--neon);
+  box-shadow:
+    0 0 8px rgba(0,229,200,0.4),
+    inset 0 0 8px rgba(0,229,200,0.05);
+}
+
+.gold-text {
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(245,197,24,0.5);
+}
+
+/* ── GTA-style panels ───────────────────────────────────────────────── */
+.hud-panel {
+  background: rgba(7,8,16,0.85);
+  border: 1px solid rgba(0,229,200,0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hud-panel-dark {
+  background: rgba(4,4,8,0.92);
+  border: 1px solid rgba(255,255,255,0.06);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.glass-accent {
-  background: radial-gradient(
-    120% 120% at 50% 0%,
-    rgba(12, 116, 93, 0.12) 0%,
-    rgba(4, 4, 5, 0.5) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(12, 116, 93, 0.2);
-}
-
-.glass-dark {
-  background: rgba(4, 4, 5, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ─── Gradient Text ─────────────────────────────────────────────────── */
-.text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #a3e6d8 50%, #0c745d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-muted {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.5) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ─── Accent Line ───────────────────────────────────────────────────── */
-.accent-line {
-  width: 2px;
-  height: 40px;
-  background: linear-gradient(180deg, var(--accent-light) 0%, transparent 100%);
-}
-
-/* ─── Chapter Layout ────────────────────────────────────────────────── */
-.chapter-container {
+/* ── Chapter layout ─────────────────────────────────────────────────── */
+.chapter-section {
   position: relative;
   width: 100%;
 }
@@ -191,26 +211,21 @@ html.lenis body {
   top: 0;
   height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  pointer-events: none;
 }
 
-.chapter-content {
-  pointer-events: auto;
-}
-
-/* ─── Scrollbar ─────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
+/* ── Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb {
-  background: rgba(12, 116, 93, 0.35);
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover { background: rgba(12, 116, 93, 0.7); }
+::-webkit-scrollbar-thumb { background: rgba(0,229,200,0.3); }
+::-webkit-scrollbar-thumb:hover { background: var(--neon); }
 
-/* ─── Reduced Motion ────────────────────────────────────────────────── */
+/* ── Selection ───────────────────────────────────────────────────────── */
+::selection { background: var(--neon); color: #000; }
+
+/* ── Reduced motion ──────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -220,8 +235,43 @@ html.lenis body {
   }
 }
 
-/* ─── Selection ─────────────────────────────────────────────────────── */
-::selection {
-  background: var(--accent);
-  color: white;
+/* ── Keyframes ───────────────────────────────────────────────────────── */
+
+/* Radar sweep — used in GTAMiniMap */
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
+
+/* Blip pulse — current location dot */
+@keyframes blipPulse {
+  0%, 100% { opacity: 1; r: 4; }
+  50%       { opacity: 0.4; r: 6; }
+}
+
+/* Neon flicker */
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.4; }
+  94% { opacity: 1; }
+  96% { opacity: 0.6; }
+  97% { opacity: 1; }
+}
+
+/* Slide up reveal */
+@keyframes slideUpReveal {
+  from { transform: translateY(120%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Loading bar fill */
+@keyframes loadFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── Utility classes ─────────────────────────────────────────────────── */
+.clip-overflow { overflow: hidden; }
+.absolute-fill { position: absolute; inset: 0; }
+.fixed-fill    { position: fixed; inset: 0; }

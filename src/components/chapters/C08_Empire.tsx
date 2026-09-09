@@ -1,108 +1,102 @@
 "use client";
 
-const STREAMS = ["WEB", "AI", "SAAS", "AUTOMATION", "MARKETING", "PROJECTS", "PEOPLE", "IDEAS"];
-
+const STREAMS = ["WEB","AI","SAAS","AUTOMATION","MARKETING","PROJECTS","PEOPLE","IDEAS"];
 const CONTACT_TYPES = [
-  { value: "", label: "Select a project type" },
-  { value: "web", label: "Web Development" },
-  { value: "ai", label: "AI & Automation" },
-  { value: "saas", label: "SaaS Development" },
-  { value: "marketing", label: "Digital Marketing" },
-  { value: "other", label: "Other" },
+  { value:"", label:"Select project type" },
+  { value:"web", label:"Web Development" },
+  { value:"ai",  label:"AI and Automation" },
+  { value:"saas",label:"SaaS Development" },
+  { value:"mkt", label:"Digital Marketing" },
+  { value:"other",label:"Other" },
 ];
 
 export default function C08_Empire() {
   return (
     <>
-      {/* ── Chapter 08: The Empire ─────────────────────────────────────── */}
-      <section
-        id="chapter-empire"
-        aria-label="Chapter 08 — The Empire"
-        className="relative w-full"
-      >
-        <div style={{ height: "600vh" }} className="relative">
-          <div
-            className="sticky top-0 h-screen flex flex-col items-start justify-center overflow-hidden text-left"
-            style={{ padding: "5rem clamp(2rem, 8vw, 6rem)" }}
-          >
-            {/* Ghost numeral */}
-            <span
-              className="type-chapter-num absolute"
-              style={{ top: "50%", left: "clamp(1rem,4vw,3rem)", transform: "translateY(-50%)", zIndex: 0 }}
-              aria-hidden="true"
-            >
-              08
-            </span>
+      {/* ── The Empire ── */}
+      <section id="chapter-empire" aria-label="The Empire" style={{ position:"relative", width:"100%", background:"var(--bg,#070810)" }}>
+        <div style={{ height:"600vh", position:"relative" }}>
+          <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center"
+            style={{ padding:"6rem clamp(2rem,8vw,7rem) 4rem" }}>
 
-            <div className="relative z-10 max-w-3xl">
-              <p className="type-codename mb-5">08 — THE EMPIRE</p>
+            {/* Background radial */}
+            <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse at 50% 50%, rgba(0,229,200,0.08) 0%, rgba(7,8,16,0) 70%)", pointerEvents:"none" }} />
 
-              {/* Convergence streams */}
-              <div className="flex flex-wrap gap-2 mb-10">
+            {/* Grid */}
+            <div style={{ position:"absolute", inset:0, pointerEvents:"none",
+              backgroundImage:"linear-gradient(rgba(0,229,200,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,200,0.03) 1px,transparent 1px)",
+              backgroundSize:"80px 80px" }} />
+
+            <div className="relative z-10 max-w-4xl">
+              {/* Stream tags */}
+              <div style={{ display:"flex", flexWrap:"wrap", gap:"0.5rem", marginBottom:"3rem" }}>
                 {STREAMS.map((s) => (
-                  <span
-                    key={s}
-                    className="font-mono text-xs font-bold tracking-[0.2em] px-3 py-1.5 border rounded-sm"
-                    style={{ borderColor: "rgba(12,116,93,0.15)", color: "var(--fg-muted)", opacity: 0.5, letterSpacing: "0.2em" }}
-                  >
+                  <span key={s} className="font-mono"
+                    style={{ fontSize:"0.65rem", letterSpacing:"0.2em", padding:"0.4rem 1rem",
+                      border:"1px solid rgba(0,229,200,0.12)", color:"rgba(255,255,255,0.3)" }}>
                     {s}
                   </span>
                 ))}
               </div>
 
-              {/* Grand manifesto */}
-              <h2
-                className="type-empire text-white mb-4"
-                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-              >
-                WE'RE NOT BUILDING FOR TODAY.
-              </h2>
-              {/* --power accent: the one climactic moment allowed */}
-              <h2
-                className="type-empire mb-10"
-                style={{
-                  fontSize: "clamp(2.5rem, 7vw, 6rem)",
-                  color: "var(--power)",
-                  textShadow: "0 0 60px var(--power-glow)",
-                }}
-              >
-                WE'RE BUILDING FOR WHAT'S NEXT.
-              </h2>
+              {/* Manifesto */}
+              <div style={{ marginBottom:"1rem" }}>
+                <p style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                  fontSize:"clamp(3rem,8vw,8rem)", lineHeight:0.88, letterSpacing:"0.02em", color:"#ffffff" }}>
+                  WE'RE NOT BUILDING
+                </p>
+                <p style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                  fontSize:"clamp(3rem,8vw,8rem)", lineHeight:0.88, letterSpacing:"0.02em", color:"#ffffff" }}>
+                  FOR TODAY.
+                </p>
+              </div>
+              <div style={{ marginBottom:"3rem" }}>
+                <p style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                  fontSize:"clamp(3rem,8vw,8rem)", lineHeight:0.88, letterSpacing:"0.02em",
+                  color:"var(--neon,#00e5c8)",
+                  textShadow:"0 0 40px rgba(0,229,200,0.4), 0 0 80px rgba(0,229,200,0.2)" }}>
+                  WE'RE BUILDING
+                </p>
+                <p style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                  fontSize:"clamp(3rem,8vw,8rem)", lineHeight:0.88, letterSpacing:"0.02em",
+                  color:"var(--neon,#00e5c8)",
+                  textShadow:"0 0 40px rgba(0,229,200,0.4), 0 0 80px rgba(0,229,200,0.2)" }}>
+                  FOR WHAT'S NEXT.
+                </p>
+              </div>
 
               {/* Brand statement */}
-              <div className="mb-14 space-y-1">
-                {["ONE VISION.", "ONE MISSION.", "ONE US."].map((line) => (
-                  <p key={line} className="font-mono text-sm tracking-[0.3em]" style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.3em" }}>
+              <div style={{ display:"flex", flexDirection:"column", gap:"0.25rem", marginBottom:"3rem" }}>
+                {["ONE VISION.","ONE MISSION.","ONE US."].map((line) => (
+                  <p key={line} className="font-mono"
+                    style={{ fontSize:"0.9rem", letterSpacing:"0.3em", color:"rgba(255,255,255,0.25)" }}>
                     {line}
                   </p>
                 ))}
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center gap-4 font-mono text-sm font-bold tracking-[0.25em] text-white uppercase px-10 py-4 border transition-all duration-400 overflow-hidden"
-                  style={{ borderColor: "var(--accent-light)", letterSpacing: "0.25em" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--power)";
-                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--power)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--accent-light)";
-                    (e.currentTarget as HTMLAnchorElement).style.color = "white";
-                  }}
-                  aria-label="Build with HESICS — go to contact form"
-                >
+              <div style={{ display:"flex", flexWrap:"wrap", gap:"1rem" }}>
+                <a href="#contact"
+                  style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                    fontSize:"1.4rem", letterSpacing:"0.12em", padding:"1rem 3rem",
+                    border:"2px solid var(--neon,#00e5c8)", color:"#000",
+                    background:"var(--neon,#00e5c8)", textDecoration:"none", display:"inline-block",
+                    transition:"all 0.3s ease" }}
+                  onMouseEnter={(e) => { const el=e.currentTarget as HTMLAnchorElement; el.style.background="transparent"; el.style.color="var(--neon,#00e5c8)"; }}
+                  onMouseLeave={(e) => { const el=e.currentTarget as HTMLAnchorElement; el.style.background="var(--neon,#00e5c8)"; el.style.color="#000"; }}
+                  aria-label="Build with HESICS">
                   BUILD WITH HESICS
                 </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-3 font-mono text-sm tracking-[0.2em] uppercase px-8 py-4 border transition-all duration-300"
-                  style={{ borderColor: "rgba(255,255,255,0.1)", color: "var(--fg-muted)", letterSpacing: "0.2em" }}
-                  aria-label="Start a project with HESICS"
-                >
-                  START A PROJECT →
+                <a href="#contact"
+                  style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                    fontSize:"1.4rem", letterSpacing:"0.12em", padding:"1rem 2.5rem",
+                    border:"2px solid rgba(255,255,255,0.2)", color:"rgba(255,255,255,0.6)",
+                    textDecoration:"none", display:"inline-block", transition:"all 0.3s ease" }}
+                  onMouseEnter={(e) => { const el=e.currentTarget as HTMLAnchorElement; el.style.borderColor="rgba(255,255,255,0.5)"; el.style.color="#ffffff"; }}
+                  onMouseLeave={(e) => { const el=e.currentTarget as HTMLAnchorElement; el.style.borderColor="rgba(255,255,255,0.2)"; el.style.color="rgba(255,255,255,0.6)"; }}
+                  aria-label="Start a project">
+                  START A PROJECT
                 </a>
               </div>
             </div>
@@ -110,110 +104,87 @@ export default function C08_Empire() {
         </div>
       </section>
 
-      {/* ── Contact section ───────────────────────────────────────────── */}
-      <section
-        id="contact"
-        className="relative w-full py-28 px-6"
-        style={{ background: "var(--bg)" }}
-        aria-label="Contact HESICS — Start your project"
-      >
-        <div className="max-w-2xl mx-auto">
-          {/* Narrative */}
-          <div className="text-center mb-16">
-            {["YOUR IDEA", "↓", "YOUR PROBLEM", "↓", "HESICS", "↓", "LET'S BUILD"].map((line, i) => (
-              <p
-                key={i}
-                className="font-mono"
+      {/* ── Contact ── */}
+      <section id="contact" aria-label="Contact HESICS"
+        style={{ position:"relative", width:"100%", background:"var(--bg,#070810)", padding:"8rem clamp(1rem,6vw,4rem)" }}>
+        <div style={{ maxWidth:"680px", margin:"0 auto" }}>
+          {/* Narrative path */}
+          <div style={{ textAlign:"center", marginBottom:"4rem" }}>
+            {["YOUR IDEA","↓","YOUR PROBLEM","↓","HESICS","↓","LET'S BUILD"].map((line,i) => (
+              <p key={i} className={line==="↓"?"":"font-mono"}
                 style={{
-                  color: line === "HESICS" ? "var(--accent-light)" : line === "↓" ? "rgba(12,116,93,0.3)" : "var(--fg-muted)",
-                  fontSize: line === "HESICS" ? "1rem" : "0.75rem",
-                  fontWeight: line === "HESICS" || line === "LET'S BUILD" ? 700 : 400,
-                  letterSpacing: "0.2em",
-                  marginBottom: "0.5rem",
-                }}
-              >
+                  fontFamily: line==="HESICS"||line==="LET'S BUILD" ? "var(--font-display,'Bebas Neue',Impact,sans-serif)" : "var(--font-mono,'Courier New',monospace)",
+                  fontSize: line==="HESICS" ? "3rem" : line==="LET'S BUILD" ? "2rem" : line==="↓" ? "1.5rem" : "0.75rem",
+                  letterSpacing: line==="HESICS"||line==="LET'S BUILD" ? "0.08em" : "0.2em",
+                  color: line==="HESICS" ? "var(--neon,#00e5c8)" : line==="↓" ? "rgba(0,229,200,0.2)" : line==="LET'S BUILD" ? "#ffffff" : "rgba(255,255,255,0.35)",
+                  lineHeight: line==="↓" ? 0.8 : 1.2,
+                  marginBottom: "0.4rem",
+                  textShadow: line==="HESICS" ? "0 0 20px rgba(0,229,200,0.4)" : "none",
+                }}>
                 {line}
               </p>
             ))}
           </div>
 
           {/* Form */}
-          <form className="space-y-4" aria-label="Project inquiry form" onSubmit={(e) => e.preventDefault()} noValidate>
+          <form onSubmit={(e) => e.preventDefault()} noValidate
+            style={{ display:"flex", flexDirection:"column", gap:"1.2rem" }}
+            aria-label="Project inquiry">
             {[
-              { id: "contact-name",    type: "text",  label: "Name *",    placeholder: "Your name",         autoComplete: "name",         required: true },
-              { id: "contact-email",   type: "email", label: "Email *",   placeholder: "you@company.com",   autoComplete: "email",        required: true },
-              { id: "contact-company", type: "text",  label: "Company",   placeholder: "Your company",      autoComplete: "organization", required: false },
-            ].map(({ id, type, label, placeholder, autoComplete, required }) => (
+              { id:"cn", type:"text",  label:"NAME",    ph:"Your name",        ac:"name",         req:true },
+              { id:"ce", type:"email", label:"EMAIL",   ph:"you@company.com",  ac:"email",        req:true },
+              { id:"cc", type:"text",  label:"COMPANY", ph:"Your company",     ac:"organization", req:false },
+            ].map(({id,type,label,ph,ac,req}) => (
               <div key={id}>
-                <label htmlFor={id} className="font-mono text-xs tracking-[0.2em] block mb-2" style={{ color: "var(--fg-muted)", fontSize: "0.65rem" }}>
-                  {label}
-                </label>
-                <input
-                  id={id} type={type} required={required} autoComplete={autoComplete} placeholder={placeholder}
-                  className="w-full font-mono text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors duration-200 placeholder:text-white/20"
-                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "white" }}
-                  onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "var(--accent-light)"; }}
-                  onBlur={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor = "rgba(255,255,255,0.08)"; }}
-                />
+                <label htmlFor={id} className="font-mono" style={{ fontSize:"0.65rem", letterSpacing:"0.2em", color:"rgba(255,255,255,0.35)", display:"block", marginBottom:"0.5rem" }}>{label}{req?" *":""}</label>
+                <input id={id} type={type} required={req} autoComplete={ac} placeholder={ph}
+                  style={{ width:"100%", fontFamily:"var(--font-body,'DM Sans',sans-serif)", fontSize:"1rem",
+                    padding:"0.85rem 1rem", border:"1px solid rgba(255,255,255,0.08)",
+                    background:"rgba(255,255,255,0.03)", color:"#ffffff", outline:"none", transition:"border-color 0.2s" }}
+                  onFocus={(e) => { (e.currentTarget as HTMLInputElement).style.borderColor="var(--neon,#00e5c8)"; }}
+                  onBlur={(e)  => { (e.currentTarget as HTMLInputElement).style.borderColor="rgba(255,255,255,0.08)"; }} />
               </div>
             ))}
 
             <div>
-              <label htmlFor="contact-type" className="font-mono text-xs tracking-[0.2em] block mb-2" style={{ color: "var(--fg-muted)", fontSize: "0.65rem" }}>
-                PROJECT TYPE
-              </label>
-              <select
-                id="contact-type"
-                className="w-full font-mono text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors duration-200 appearance-none"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)" }}
-              >
-                {CONTACT_TYPES.map((t) => (
-                  <option key={t.value} value={t.value}>{t.label}</option>
-                ))}
+              <label htmlFor="ct" className="font-mono" style={{ fontSize:"0.65rem", letterSpacing:"0.2em", color:"rgba(255,255,255,0.35)", display:"block", marginBottom:"0.5rem" }}>PROJECT TYPE</label>
+              <select id="ct" style={{ width:"100%", fontFamily:"var(--font-body,'DM Sans',sans-serif)", fontSize:"1rem",
+                padding:"0.85rem 1rem", border:"1px solid rgba(255,255,255,0.08)",
+                background:"rgba(7,8,16,0.95)", color:"rgba(255,255,255,0.7)", outline:"none" }}>
+                {CONTACT_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
               </select>
             </div>
 
             <div>
-              <label htmlFor="contact-message" className="font-mono text-xs tracking-[0.2em] block mb-2" style={{ color: "var(--fg-muted)", fontSize: "0.65rem" }}>
-                TELL US ABOUT YOUR PROJECT *
-              </label>
-              <textarea
-                id="contact-message" required rows={5}
-                placeholder="Describe your project, problem, or idea..."
-                className="w-full font-mono text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors duration-200 placeholder:text-white/20 resize-y"
-                style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", color: "white" }}
-                onFocus={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = "var(--accent-light)"; }}
-                onBlur={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor = "rgba(255,255,255,0.08)"; }}
-              />
+              <label htmlFor="cm" className="font-mono" style={{ fontSize:"0.65rem", letterSpacing:"0.2em", color:"rgba(255,255,255,0.35)", display:"block", marginBottom:"0.5rem" }}>TELL US ABOUT YOUR PROJECT *</label>
+              <textarea id="cm" required rows={5} placeholder="Describe your project..."
+                style={{ width:"100%", fontFamily:"var(--font-body,'DM Sans',sans-serif)", fontSize:"1rem",
+                  padding:"0.85rem 1rem", border:"1px solid rgba(255,255,255,0.08)",
+                  background:"rgba(255,255,255,0.03)", color:"#ffffff", outline:"none",
+                  resize:"vertical", transition:"border-color 0.2s" }}
+                onFocus={(e) => { (e.currentTarget as HTMLTextAreaElement).style.borderColor="var(--neon,#00e5c8)"; }}
+                onBlur={(e)  => { (e.currentTarget as HTMLTextAreaElement).style.borderColor="rgba(255,255,255,0.08)"; }} />
             </div>
 
-            <button
-              type="submit"
-              className="w-full inline-flex items-center justify-center gap-4 font-mono text-sm font-bold tracking-[0.3em] text-white uppercase px-8 py-5 border transition-all duration-300"
-              style={{ borderColor: "var(--accent-light)", letterSpacing: "0.3em" }}
-              aria-label="Submit project inquiry to HESICS"
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLButtonElement;
-                el.style.borderColor = "var(--power)";
-                el.style.color = "var(--power)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLButtonElement;
-                el.style.borderColor = "var(--accent-light)";
-                el.style.color = "white";
-              }}
-            >
-              START A PROJECT →
+            <button type="submit"
+              style={{ fontFamily:"var(--font-display,'Bebas Neue',Impact,sans-serif)",
+                fontSize:"1.4rem", letterSpacing:"0.15em", padding:"1.2rem",
+                width:"100%", border:"2px solid var(--neon,#00e5c8)",
+                color:"#000", background:"var(--neon,#00e5c8)", cursor:"pointer",
+                transition:"all 0.3s ease" }}
+              onMouseEnter={(e) => { const el=e.currentTarget as HTMLButtonElement; el.style.background="transparent"; el.style.color="var(--neon,#00e5c8)"; }}
+              onMouseLeave={(e) => { const el=e.currentTarget as HTMLButtonElement; el.style.background="var(--neon,#00e5c8)"; el.style.color="#000"; }}>
+              START A PROJECT
             </button>
           </form>
 
-          {/* Footer */}
-          <footer className="mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p className="font-mono text-xs tracking-widest" style={{ color: "var(--fg-subtle)" }}>
+          <footer style={{ marginTop:"4rem", paddingTop:"2rem", borderTop:"1px solid rgba(255,255,255,0.06)",
+            display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+            <p className="font-mono" style={{ fontSize:"0.65rem", color:"rgba(255,255,255,0.2)", letterSpacing:"0.15em" }}>
               © {new Date().getFullYear()} HESICS TECHNOLOGIES
             </p>
-            <p className="font-mono text-xs tracking-wider" style={{ color: "var(--accent)", opacity: 0.4 }}>
-              THE EMPIRE v2.0
+            <p className="font-mono" style={{ fontSize:"0.65rem", color:"rgba(0,229,200,0.3)", letterSpacing:"0.15em" }}>
+              EMPIRE v3.0
             </p>
           </footer>
         </div>
