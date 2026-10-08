@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Check, ShieldCheck, ChevronDown, MessageSquare, ArrowRight } from "lucide-react";
+import { Check, ShieldCheck, ChevronDown, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
 import FunnelHeader from "@/components/funnel/FunnelHeader";
 import FunnelFooter from "@/components/funnel/FunnelFooter";
 import LeadForm from "@/components/funnel/LeadForm";
+import ParallaxBackground from "@/components/funnel/ParallaxBackground";
 import { SITE_CONFIG, waLink } from "@/config/site";
 import { trackEvent } from "@/lib/analytics";
 
@@ -35,7 +36,7 @@ const PRICING_TIERS: PricingTier[] = [
   },
   {
     name: "Growth",
-    badge: "Most Popular",
+    badge: "Most Selected",
     price: "5,499",
     currency: "AED",
     featured: true,
@@ -104,59 +105,63 @@ export default function ConvertClient() {
   };
 
   return (
-    <>
+    <div className="relative min-h-screen bg-[#050608] text-[#f8fafc] overflow-x-hidden selection:bg-[#d4af37] selection:text-black">
+      {/* Scroll-Reactive Parallax Mastermind Background */}
+      <ParallaxBackground imageSrc="/mastermind-vault.jpg" overlayOpacity={0.88} />
+
       <FunnelHeader />
 
-      <main className="min-h-screen bg-[var(--f-bg,#08090d)] text-[var(--f-fg,#f8fafc)]">
-        {/* Ambient background glow */}
-        <div
-          aria-hidden="true"
-          className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.06),transparent_70%)] pointer-events-none z-0"
-        />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+      <main className="relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-20">
           
           {/* SECTION 1: THE REVEAL */}
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--f-teal-dim,rgba(16,185,129,0.12))] border border-[var(--f-teal,#10b981)]/30 text-[var(--f-teal,#10b981)] text-xs font-semibold uppercase tracking-wider mb-4">
-              The HESICS Difference · Zero Fluff
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/80 border border-[#10b981]/40 text-[#10b981] text-[11px] font-syne font-bold uppercase tracking-[0.2em] mb-5 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping" />
+              <span>Level 3 BOFU // Mastermind Reveal</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white font-[var(--f-font-display,sans-serif)] leading-tight mb-4">
-              Every GrowthSite Includes Built-In WhatsApp Lead Routing
+            <h1 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-5 drop-shadow-[0_4px_25px_rgba(0,0,0,0.9)]">
+              Every GrowthSite Includes Built-In{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffd700] via-[#f3ce5e] to-[#d4af37]">
+                WhatsApp Lead Routing
+              </span>
             </h1>
-            <p className="text-sm sm:text-base text-[var(--f-fg-muted,#94a3b8)] leading-relaxed">
+            <p className="font-syne text-sm sm:text-base text-[#94a3b8] leading-relaxed">
               Traditional web designers build pretty brochures that sit idle. We engineer a conversion system that captures buyer intent, qualifies prospects, and routes high-intent inquiries straight to your phone.
             </p>
           </div>
 
           {/* SECTION 2: LOW-FRICTION PRIMARY CTA (Above Pricing) */}
-          <div className="max-w-xl mx-auto mb-14 text-center p-6 rounded-2xl border border-[var(--f-teal,#10b981)]/30 bg-[var(--f-teal-dim,rgba(16,185,129,0.04))]">
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--f-teal,#10b981)]">
-              Not Ready To Pick A Plan Yet?
+          <div className="max-w-xl mx-auto mb-16 text-center p-6 sm:p-7 rounded-2xl border border-[#10b981]/30 bg-[#090b10]/90 backdrop-blur-md shadow-[0_10px_35px_rgba(0,0,0,0.7)] relative group">
+            <div className="tactical-crosshair crosshair-tl" />
+            <div className="tactical-crosshair crosshair-br" />
+
+            <span className="font-syne text-xs font-black uppercase tracking-[0.2em] text-[#10b981]">
+              Zero-Risk Audit Reconnaissance
             </span>
-            <h2 className="text-xl sm:text-2xl font-bold text-white mt-1 mb-2">
+            <h2 className="font-cinzel text-xl sm:text-2xl font-bold text-white mt-1.5 mb-2">
               Get a Free 3-Point Website Audit
             </h2>
-            <p className="text-xs sm:text-sm text-[var(--f-fg-muted,#94a3b8)] mb-5">
+            <p className="text-xs sm:text-sm text-[#94a3b8] mb-6">
               We&apos;ll inspect your current mobile speed, WhatsApp conversion flow, and trust signals — free of charge.
             </p>
             <button
               type="button"
               onClick={handleAuditClick}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-[var(--f-teal,#10b981)] hover:bg-[var(--f-teal,#10b981)]/90 text-black shadow-lg hover:scale-[1.02] transition-all cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-syne font-bold text-sm bg-gradient-to-r from-[#10b981] to-emerald-400 text-black shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] hover:scale-[1.02] transition-all cursor-pointer"
             >
               <span>Get My Free 3-Point Audit</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={17} />
             </button>
           </div>
 
           {/* SECTION 3: PRICING (Rewritten as USE CASES, no page counts) */}
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--f-gold,#d4af37)]">
-                Transparent Investment
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <span className="font-syne text-xs font-black uppercase tracking-[0.25em] text-[#ffd700]">
+                Tactical Investment Tiers
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white font-[var(--f-font-display,sans-serif)] mt-1">
+              <h2 className="font-cinzel text-2xl sm:text-4xl font-black text-white mt-2">
                 Predictable Packages. Guaranteed Delivery.
               </h2>
             </div>
@@ -165,40 +170,43 @@ export default function ConvertClient() {
               {PRICING_TIERS.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`relative p-6 sm:p-7 rounded-2xl flex flex-col justify-between transition-all ${
+                  className={`relative p-6 sm:p-7 rounded-2xl flex flex-col justify-between transition-all backdrop-blur-md ${
                     tier.featured
-                      ? "border-2 border-[var(--f-gold,#d4af37)] bg-gradient-to-b from-[var(--f-gold-dim,rgba(212,175,55,0.08))] to-transparent shadow-[0_0_35px_rgba(212,175,55,0.15)] scale-[1.02]"
-                      : "border border-white/10 bg-white/[0.02]"
+                      ? "border-2 border-[#ffd700] bg-gradient-to-b from-[#d4af37]/15 via-[#090b10] to-[#050608] shadow-[0_0_40px_rgba(212,175,55,0.25)] scale-[1.02]"
+                      : "border border-white/10 bg-[#090b10]/80 shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
                   }`}
                 >
+                  <div className="tactical-crosshair crosshair-tl" />
+                  <div className="tactical-crosshair crosshair-br" />
+
                   {tier.badge && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[var(--f-gold,#d4af37)] text-black text-[10px] font-black uppercase tracking-wider shadow-md">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#b8860b] via-[#ffd700] to-[#f3ce5e] text-black text-[10px] font-syne font-black uppercase tracking-wider shadow-lg">
                       {tier.badge}
                     </div>
                   )}
 
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-1">{tier.name}</h3>
-                    <p className="text-xs text-[var(--f-gold,#d4af37)] font-medium mb-4 min-h-[32px]">
+                    <h3 className="font-cinzel text-xl font-black text-white mb-1">{tier.name}</h3>
+                    <p className="font-syne text-xs text-[#ffd700] font-semibold mb-4 min-h-[32px]">
                       &quot;{tier.useCase}&quot;
                     </p>
 
-                    <div className="flex items-baseline gap-1 mb-6">
-                      <span className="text-xs text-[var(--f-fg-muted,#94a3b8)] font-semibold">{tier.currency}</span>
-                      <span className="text-3xl sm:text-4xl font-black text-white font-[var(--f-font-display,sans-serif)]">
+                    <div className="flex items-baseline gap-1.5 mb-6">
+                      <span className="text-xs text-[#94a3b8] font-bold font-syne">{tier.currency}</span>
+                      <span className="font-cinzel text-3xl sm:text-4xl font-black text-white">
                         {tier.price}
                       </span>
-                      <span className="text-xs text-[var(--f-fg-muted,#94a3b8)]">/ one-time</span>
+                      <span className="text-xs text-[#94a3b8] font-mono">/ one-time</span>
                     </div>
 
                     <div className="border-t border-white/10 pt-4 mb-6">
-                      <div className="text-[11px] uppercase tracking-wider font-bold text-zinc-400 mb-3">
+                      <div className="text-[11px] font-syne uppercase tracking-wider font-bold text-zinc-400 mb-3">
                         Use Cases & Outcomes:
                       </div>
                       <ul className="space-y-2.5">
                         {tier.bullets.map((b, idx) => (
                           <li key={idx} className="flex items-start gap-2.5 text-xs text-zinc-300 leading-snug">
-                            <Check size={14} className="text-[var(--f-teal,#10b981)] flex-shrink-0 mt-0.5" />
+                            <Check size={14} className="text-[#10b981] flex-shrink-0 mt-0.5" />
                             <span>{b}</span>
                           </li>
                         ))}
@@ -211,10 +219,10 @@ export default function ConvertClient() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => handleWaPlanClick(tier.name)}
-                    className={`w-full py-3 px-4 rounded-xl text-xs font-bold text-center transition-all flex items-center justify-center gap-1.5 ${
+                    className={`w-full py-3.5 px-4 rounded-xl text-xs font-syne font-bold text-center transition-all flex items-center justify-center gap-2 cursor-pointer ${
                       tier.featured
-                        ? "bg-gradient-to-r from-[var(--f-gold,#d4af37)] to-[var(--f-gold-light,#f3ce5e)] text-black shadow-md hover:scale-[1.01]"
-                        : "border border-white/20 bg-white/5 text-white hover:border-white/40"
+                        ? "bg-gradient-to-r from-[#b8860b] via-[#ffd700] to-[#f3ce5e] text-black shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02]"
+                        : "border border-white/20 bg-white/5 text-white hover:border-[#ffd700]/50"
                     }`}
                   >
                     <span>Claim This Package</span>
@@ -225,41 +233,46 @@ export default function ConvertClient() {
             </div>
           </div>
 
-          {/* SECTION 4: SINGLE STANDARDIZED GUARANTEE */}
-          <div className="mb-16 p-6 sm:p-8 rounded-2xl border border-[var(--f-teal,#10b981)]/30 bg-[var(--f-teal-dim,rgba(16,185,129,0.04))] text-center max-w-2xl mx-auto">
-            <div className="w-12 h-12 rounded-full bg-[var(--f-teal,#10b981)]/20 text-[var(--f-teal,#10b981)] flex items-center justify-center mx-auto mb-3">
-              <ShieldCheck size={26} />
+          {/* SECTION 4: SINGLE STANDARDIZED GUARANTEE (Vault Sealed Guarantee) */}
+          <div className="mb-20 p-7 sm:p-9 rounded-2xl border-2 border-[#10b981]/35 bg-[#090b10]/90 backdrop-blur-md text-center max-w-2xl mx-auto shadow-[0_15px_45px_rgba(0,0,0,0.8)] relative group">
+            <div className="tactical-crosshair crosshair-tl" />
+            <div className="tactical-crosshair crosshair-tr" />
+            <div className="tactical-crosshair crosshair-bl" />
+            <div className="tactical-crosshair crosshair-br" />
+
+            <div className="w-14 h-14 rounded-full bg-[#10b981]/20 text-[#10b981] flex items-center justify-center mx-auto mb-4 border border-[#10b981]/40 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+              <ShieldCheck size={28} />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 font-[var(--f-font-display,sans-serif)]">
-              The HESICS Delivery Guarantee
+            <h3 className="font-cinzel text-xl sm:text-2xl font-black text-white mb-3">
+              The HESICS Ironclad Delivery Guarantee
             </h3>
-            <p className="text-sm sm:text-base text-zinc-300 font-medium leading-relaxed max-w-lg mx-auto">
+            <p className="font-syne text-sm sm:text-base text-zinc-200 font-medium leading-relaxed max-w-lg mx-auto">
               {SITE_CONFIG.guaranteeText}
             </p>
           </div>
 
           {/* SECTION 5: 5 FAQS */}
-          <div className="mb-16 max-w-2xl mx-auto">
+          <div className="mb-20 max-w-2xl mx-auto">
             <div className="text-center mb-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--f-gold,#d4af37)]">
-                Frequently Asked Questions
+              <span className="font-syne text-xs font-bold uppercase tracking-[0.25em] text-[#ffd700]">
+                Pre-Contract Briefing
               </span>
-              <h2 className="text-2xl font-bold text-white mt-1">
-                Clear Answers Before You Begin
+              <h2 className="font-cinzel text-2xl sm:text-3xl font-black text-white mt-1">
+                Frequently Asked Questions
               </h2>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3.5">
               {FAQS.map((faq, i) => (
                 <details
                   key={i}
-                  className="group p-4 sm:p-5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer"
+                  className="group p-5 rounded-xl border border-white/10 bg-[#090b10]/80 backdrop-blur-md cursor-pointer transition-colors hover:border-[#ffd700]/30"
                 >
-                  <summary className="flex items-center justify-between gap-3 text-sm sm:text-base font-bold text-white list-none">
+                  <summary className="flex items-center justify-between gap-3 text-sm sm:text-base font-syne font-bold text-white list-none">
                     <span>{faq.q}</span>
-                    <ChevronDown size={18} className="text-[var(--f-gold,#d4af37)] group-open:rotate-180 transition-transform flex-shrink-0" />
+                    <ChevronDown size={18} className="text-[#ffd700] group-open:rotate-180 transition-transform flex-shrink-0" />
                   </summary>
-                  <p className="mt-3 text-xs sm:text-sm text-[var(--f-fg-muted,#94a3b8)] leading-relaxed">
+                  <p className="mt-3.5 text-xs sm:text-sm text-[#94a3b8] leading-relaxed font-sans">
                     {faq.a}
                   </p>
                 </details>
@@ -268,10 +281,10 @@ export default function ConvertClient() {
           </div>
 
           {/* SECTION 6: SCARCITY LINE FROM CONFIG */}
-          <div className="mb-12 max-w-xl mx-auto text-center p-4 rounded-xl border border-red-500/20 bg-red-500/[0.04]">
-            <p className="text-xs sm:text-sm text-zinc-300 font-medium">
-              We take a maximum of <strong className="text-red-400">3 clients per month</strong> to ensure full engineering attention on every project.{" "}
-              <strong className="text-[var(--f-gold,#d4af37)]">{SITE_CONFIG.slotsRemaining} slots remaining this month.</strong>
+          <div className="mb-14 max-w-xl mx-auto text-center p-4 sm:p-5 rounded-xl border border-red-500/25 bg-red-950/20 backdrop-blur-md">
+            <p className="font-syne text-xs sm:text-sm text-zinc-200 font-semibold tracking-wide">
+              We accept a strict maximum of <strong className="text-red-400">3 clients per month</strong> to protect full architectural bandwidth.{" "}
+              <strong className="text-[#ffd700]">{SITE_CONFIG.slotsRemaining} slots remaining this cycle.</strong>
             </p>
           </div>
 
@@ -280,18 +293,18 @@ export default function ConvertClient() {
             <LeadForm id="lead-form" />
 
             {/* Direct WhatsApp Alternative */}
-            <div className="mt-6 text-center">
-              <p className="text-xs text-[var(--f-fg-muted,#94a3b8)] mb-3">
-                Prefer to discuss directly right now?
+            <div className="mt-8 text-center">
+              <p className="font-syne text-xs text-[#94a3b8] mb-3 uppercase tracking-wider font-semibold">
+                Prefer immediate direct communication?
               </p>
               <a
                 href={waLink("Hi Sheikh, I'd like to discuss building a GrowthSite for my business directly.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("click_whatsapp", { location: "convert_bottom" })}
-                className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-xs font-bold bg-[var(--f-whatsapp,#22c55e)] hover:bg-[var(--f-whatsapp-dark,#15803d)] text-white shadow-lg transition-all"
+                className="inline-flex items-center justify-center gap-2.5 py-3.5 px-7 rounded-xl font-syne text-xs font-bold bg-[#22c55e] hover:bg-[#15803d] text-white shadow-[0_0_25px_rgba(34,197,94,0.35)] transition-all cursor-pointer"
               >
-                <MessageSquare size={15} />
+                <MessageSquare size={16} />
                 <span>Message Sheikh on WhatsApp Directly</span>
               </a>
             </div>
@@ -301,6 +314,6 @@ export default function ConvertClient() {
       </main>
 
       <FunnelFooter />
-    </>
+    </div>
   );
 }

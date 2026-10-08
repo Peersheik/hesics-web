@@ -1,21 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
+import { Cinzel, Syne, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import "./funnel/funnel.css";
 import SmoothScroll from "@/components/dom/SmoothScroll";
-import ThemePullCord from "@/components/funnel/ThemePullCord";
 
-const jakarta = Plus_Jakarta_Sans({
+const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-body",
+  weight: ["500", "600", "700", "800", "900"],
+  variable: "--font-cinzel",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -26,7 +32,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#08090d",
+  themeColor: "#050608",
 };
 
 export const metadata: Metadata = {
@@ -56,12 +62,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${spaceGrotesk.variable} dark`}
+      className={`${cinzel.variable} ${syne.variable} ${jakarta.variable} dark`}
       suppressHydrationWarning
     >
-      <body className="funnel-body overflow-x-hidden min-h-screen relative">
+      <body className="funnel-body overflow-x-hidden min-h-screen relative bg-[#050608] text-[#f8fafc]">
         <AnalyticsProvider />
-        <ThemePullCord />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

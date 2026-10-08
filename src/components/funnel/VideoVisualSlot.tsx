@@ -37,27 +37,32 @@ export default function VideoVisualSlot({
 
   // Fallback: Before / After transformation viewer for Alsama Almonika (Dubai, UAE)
   return (
-    <div className="w-full rounded-2xl border border-[var(--f-border,rgba(255,255,255,0.1))] bg-[var(--f-bg-glass,#08090d)]/80 backdrop-blur-md p-4 sm:p-5 shadow-2xl">
+    <div className="relative w-full rounded-2xl border border-[#d4af37]/30 bg-[#090b10]/90 backdrop-blur-md p-4 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.8)] group">
+      <div className="tactical-crosshair crosshair-tl" />
+      <div className="tactical-crosshair crosshair-tr" />
+      <div className="tactical-crosshair crosshair-bl" />
+      <div className="tactical-crosshair crosshair-br" />
+
       {/* Top Header & Toggle */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--f-gold,#d4af37)]">
-            Verified Case · Dubai, UAE
+          <span className="text-[10px] font-syne font-black uppercase tracking-[0.2em] text-[#ffd700]">
+            DEPUTY CLEARANCE // DUBAI DEPLOYMENT
           </span>
-          <h4 className="text-sm sm:text-base font-bold text-[var(--f-fg,#f8fafc)]">
+          <h4 className="font-cinzel text-sm sm:text-base font-bold text-white tracking-wide">
             Alsama Almonika Technical Services
           </h4>
         </div>
 
         {/* Tab Switcher */}
-        <div className="inline-flex items-center p-1 rounded-full bg-black/40 border border-white/10 text-xs">
+        <div className="inline-flex items-center p-1 rounded-full bg-black/60 border border-white/10 text-xs">
           <button
             type="button"
             onClick={() => setActiveTab("after")}
-            className={`px-3 py-1 rounded-full font-medium transition-all ${
+            className={`px-3 py-1 rounded-full font-syne font-bold transition-all cursor-pointer ${
               activeTab === "after"
-                ? "bg-gradient-to-r from-[var(--f-gold,#d4af37)] to-[var(--f-gold-light,#f3ce5e)] text-black font-bold shadow-md"
-                : "text-[var(--f-fg-muted,#94a3b8)] hover:text-white"
+                ? "bg-gradient-to-r from-[#d4af37] to-[#ffd700] text-black shadow-md"
+                : "text-zinc-400 hover:text-white"
             }`}
           >
             GrowthSite (After)
@@ -65,10 +70,10 @@ export default function VideoVisualSlot({
           <button
             type="button"
             onClick={() => setActiveTab("before")}
-            className={`px-3 py-1 rounded-full font-medium transition-all ${
+            className={`px-3 py-1 rounded-full font-syne font-bold transition-all cursor-pointer ${
               activeTab === "before"
-                ? "bg-red-500/20 text-red-400 border border-red-500/30 font-bold"
-                : "text-[var(--f-fg-muted,#94a3b8)] hover:text-white"
+                ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                : "text-zinc-400 hover:text-white"
             }`}
           >
             Old Site (Before)

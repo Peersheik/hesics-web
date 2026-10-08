@@ -6,209 +6,133 @@
 /* ── Funnel Design Tokens ───────────────────────────────────────── */
 /* ── Funnel Design Tokens ───────────────────────────────────────── */
 :root {
-  --f-bg:          #08090d;
-  --f-bg-2:        #0f121a;
-  --f-bg-glass:    rgba(15, 18, 26, 0.75);
+  --f-bg:          #050608;
+  --f-bg-2:        #090b10;
+  --f-bg-glass:    rgba(9, 11, 16, 0.82);
   --f-fg:          #f8fafc;
   --f-fg-muted:    #94a3b8;
   --f-fg-subtle:   #64748b;
-  --f-border:      rgba(255, 255, 255, 0.08);
+  --f-border:      rgba(212, 175, 55, 0.15);
 
-  /* Primary Accent: Royal Amber Gold */
+  /* Primary Accent: Royal Molten Gold */
   --f-gold:        #d4af37;
   --f-gold-light:  #f3ce5e;
-  --f-gold-dim:    rgba(212, 175, 55, 0.12);
-  --f-gold-glow:   rgba(212, 175, 55, 0.3);
+  --f-gold-deep:   #b8860b;
+  --f-gold-dim:    rgba(212, 175, 55, 0.14);
+  --f-gold-glow:   rgba(212, 175, 55, 0.35);
 
-  /* Secondary Tech Accent: Deep Emerald / Persian Green */
+  /* Secondary Accent: Sinister Emerald Laser */
   --f-teal:        #10b981;
-  --f-teal-dim:    rgba(16, 185, 129, 0.12);
-  --f-teal-glow:   rgba(16, 185, 129, 0.25);
+  --f-teal-dim:    rgba(16, 185, 129, 0.15);
+  --f-teal-glow:   rgba(16, 185, 129, 0.3);
 
   /* Trust Blue */
   --f-blue:        #3b82f6;
   --f-blue-dim:    rgba(59, 130, 246, 0.12);
 
-  /* Danger/pain */
+  /* Danger / Cost of Inaction */
   --f-red:         #ef4444;
 
-  /* WhatsApp */
+  /* WhatsApp Direct */
   --f-whatsapp:    #22c55e;
   --f-whatsapp-dark: #15803d;
 
-  /* Fonts */
-  --f-font-display: var(--font-display), 'Space Grotesk', system-ui, sans-serif;
+  /* Mastermind Fonts */
+  --f-font-cinzel:  var(--font-cinzel), 'Cinzel', serif;
+  --f-font-syne:    var(--font-syne), 'Syne', sans-serif;
+  --f-font-display: var(--font-cinzel), 'Cinzel', serif;
   --f-font-body:    var(--font-body), 'Plus Jakarta Sans', system-ui, sans-serif;
 
   /* Gradients */
-  --f-gradient-hero:    radial-gradient(ellipse at top, #141a29 0%, #08090d 70%);
-  --f-gradient-gold:    linear-gradient(135deg, #d4af37 0%, #f7dc84 50%, #d4af37 100%);
-  --f-gradient-cta:     linear-gradient(135deg, #d4af37 0%, #c49a26 100%);
+  --f-gradient-hero:    radial-gradient(ellipse at top, #151822 0%, #050608 75%);
+  --f-gradient-gold:    linear-gradient(135deg, #f59e0b 0%, #ffd700 50%, #b45309 100%);
+  --f-gradient-cta:     linear-gradient(135deg, #d4af37 0%, #f3ce5e 50%, #b8860b 100%);
   --f-gradient-teal:    linear-gradient(135deg, #10b981 0%, #059669 100%);
   --f-gradient-glass:   linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
 
   /* Spacing */
   --f-section-py:  clamp(5rem, 10vw, 9rem);
   --f-container:   1200px;
-
-  /* PullCord Theme Toggle Positioning */
-  --pullcord-top: 0px;
-  --pullcord-right: 2rem;
-  --pullcord-z: 100;
-  --pullcord-ink: rgba(212, 175, 55, 0.7);
 }
 
-/* PullCord Core Styles */
-.pullcord-inner {
+/* ── Ember Particles ─────────────────────────────────────────────── */
+.ember-particle {
   position: absolute;
-  inset: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b, 0 0 16px #d97706;
+  opacity: 0;
+  animation: emberRise 12s infinite linear;
 }
-.pullcord-inner--drop {
-  animation: pullcord-drop 0.6s 0.4s cubic-bezier(0.45, 0, 0.9, 0.5) both;
-}
-@keyframes pullcord-drop {
+.ember-1 { left: 12%; animation-duration: 9s; animation-delay: 0s; }
+.ember-2 { left: 32%; animation-duration: 13s; animation-delay: 2s; }
+.ember-3 { left: 58%; animation-duration: 11s; animation-delay: 4.5s; }
+.ember-4 { left: 78%; animation-duration: 14s; animation-delay: 1s; }
+.ember-5 { left: 91%; animation-duration: 10s; animation-delay: 3s; }
+
+@keyframes emberRise {
   0% {
+    transform: translateY(100vh) scale(0.6);
     opacity: 0;
-    transform: translateY(-230px);
   }
   20% {
-    opacity: 1;
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.6;
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .pullcord-inner--drop {
-    animation: none;
-  }
-}
-.pullcord-knob {
-  -webkit-tap-highlight-color: transparent;
-  border-radius: 50%;
-}
-.pullcord-knob:active {
-  cursor: grabbing;
-}
-.pullcord-knob:focus-visible {
-  outline: 2px solid var(--pullcord-ink, rgba(127, 127, 127, 0.6));
-  outline-offset: -9px;
+
+/* ── Mastermind Tactical HUD & Aesthetics ───────────────────────── */
+.font-cinzel {
+  font-family: var(--f-font-cinzel), 'Cinzel', Georgia, serif;
 }
 
-/* ── Light Mode Override when pulled ────────────────────────────── */
-html.light {
-  --f-bg:          #f8fafc;
-  --f-bg-2:        #ffffff;
-  --f-bg-glass:    rgba(255, 255, 255, 0.88);
-  --f-fg:          #0f172a;
-  --f-fg-muted:    #475569;
-  --f-fg-subtle:   #94a3b8;
-  --f-border:      rgba(15, 23, 42, 0.08);
-
-  --f-gold:        #b8860b;
-  --f-gold-light:  #d4af37;
-  --f-gold-dim:    rgba(184, 134, 11, 0.12);
-  --f-gold-glow:   rgba(184, 134, 11, 0.25);
-
-  --f-teal:        #059669;
-  --f-teal-dim:    rgba(5, 150, 105, 0.12);
-  --f-teal-glow:   rgba(5, 150, 105, 0.2);
-
-  --f-gradient-hero:    radial-gradient(ellipse at top, #e2e8f0 0%, #f8fafc 80%);
-  --f-gradient-gold:    linear-gradient(135deg, #996515 0%, #d4af37 50%, #996515 100%);
-  --f-gradient-cta:     linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-  --f-gradient-glass:   linear-gradient(135deg, rgba(255,255,255,0.9), rgba(241,245,249,0.8));
-
-  --pullcord-ink:  rgba(15, 23, 42, 0.6);
+.font-syne {
+  font-family: var(--f-font-syne), 'Syne', sans-serif;
 }
 
-/* Light mode specific element styling */
-html.light .f-glass-card,
-html.light .f-pricing-card,
-html.light .f-testimonial,
-html.light .f-guarantee {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+.mastermind-card {
+  position: relative;
+  background: rgba(8, 10, 15, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html.light .f-pricing-card.featured {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.06), #ffffff);
-  border-color: rgba(184, 134, 11, 0.35);
-  box-shadow: 0 15px 40px rgba(184, 134, 11, 0.1);
+.mastermind-card:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.18);
+  transform: translateY(-2px);
 }
 
-html.light .f-stats-strip {
-  background: rgba(184, 134, 11, 0.04);
-  border-color: rgba(184, 134, 11, 0.15);
+.mastermind-gold-glow {
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.45);
 }
 
-html.light .f-stat-divider {
-  background: rgba(15, 23, 42, 0.1);
+.mastermind-emerald-glow {
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.45);
 }
 
-html.light .f-chip {
-  background: rgba(184, 134, 11, 0.08);
-  color: #78350f;
-  border-color: rgba(184, 134, 11, 0.2);
+/* Tactical Crosshairs */
+.tactical-crosshair {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(212, 175, 55, 0.5);
+  pointer-events: none;
 }
-
-html.light .f-chip-teal {
-  background: rgba(5, 150, 105, 0.08);
-  color: #065f46;
-  border-color: rgba(5, 150, 105, 0.2);
-}
-
-html.light .f-pain-item {
-  background: rgba(239, 68, 68, 0.04);
-  border-color: rgba(239, 68, 68, 0.15);
-}
-
-html.light .f-scarcity {
-  background: rgba(239, 68, 68, 0.04);
-  border-color: rgba(239, 68, 68, 0.15);
-}
-
-html.light .f-faq-item {
-  border-color: rgba(15, 23, 42, 0.08);
-}
-
-html.light .f-compare-col {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.08);
-}
-
-html.light .f-compare-col.them {
-  background: #f1f5f9;
-  border-color: rgba(15, 23, 42, 0.06);
-}
-
-html.light .f-compare-col.us {
-  background: #ffffff;
-  border-color: rgba(184, 134, 11, 0.3);
-  box-shadow: 0 12px 35px rgba(184, 134, 11, 0.08);
-}
-
-html.light .f-btn-ghost {
-  border-color: rgba(15, 23, 42, 0.18);
-  color: #0f172a;
-}
-html.light .f-btn-ghost:hover {
-  background: rgba(15, 23, 42, 0.06);
-  border-color: #0f172a;
-}
-
-html.light .f-hero-overlay {
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.82) 0%, rgba(248, 250, 252, 0.95) 100%);
-}
-
-/* Force light background when html has .light class */
-html.light,
-html.light body,
-html.light .funnel-body {
-  background-color: var(--f-bg) !important;
-  color: var(--f-fg) !important;
-}
+.crosshair-tl { top: -1px; left: -1px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.crosshair-tr { top: -1px; right: -1px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.crosshair-bl { bottom: -1px; left: -1px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.crosshair-br { bottom: -1px; right: -1px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
 
 /* ── Funnel Body Reset & Animated Background ────────────────────── */
 .funnel-body {
