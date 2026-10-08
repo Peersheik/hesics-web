@@ -1,56 +1,67 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Bebas_Neue } from "next/font/google";
+import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import "./funnel/funnel.css";
 import SmoothScroll from "@/components/dom/SmoothScroll";
+import ThemePullCord from "@/components/funnel/ThemePullCord";
 
-const dmSans = DM_Sans({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-body",
   display: "swap",
 });
 
-const bebasNeue = Bebas_Neue({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-bebas",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
+
+import { SITE_CONFIG } from "@/config/site";
+import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#070810",
+  themeColor: "#08090d",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hesics.com"),
-  title: "HESICS — Digital Systems For What's Next",
-  description: "HESICS builds digital empires. Web engineering, AI automation, SaaS and precision digital marketing — all under one roof.",
-  keywords: ["HESICS", "Web Development", "AI Automation", "SaaS", "Digital Marketing"],
-  authors: [{ name: "HESICS Technologies", url: "https://hesics.com" }],
-  creator: "HESICS Technologies",
-  robots: { index: true, follow: true },
+  metadataBase: new URL(SITE_CONFIG.domain),
+  title: "HESICS — GrowthSites That Win Tenders & Leads",
+  description:
+    "AI-powered websites for Gulf-based Indian business owners that win clients while you sleep.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://hesics.com",
+    url: SITE_CONFIG.domain,
     siteName: "HESICS",
-    title: "HESICS — Digital Systems For What's Next",
-    description: "Enter the HESICS Empire. Web, AI, SaaS — engineered for impact.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "HESICS",
-    description: "Digital systems engineered for what's next.",
+    title: "Your Business Deserves to Be Trusted Before the First Meeting Even Starts",
+    description:
+      "AI-powered websites for Gulf-based Indian business owners that win clients while you sleep.",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${bebasNeue.variable} dark`}>
-      <body className="overflow-x-hidden" style={{ background: "#070810", color: "#fff" }}>
+    <html
+      lang="en"
+      className={`${jakarta.variable} ${spaceGrotesk.variable} dark`}
+      suppressHydrationWarning
+    >
+      <body className="funnel-body overflow-x-hidden min-h-screen relative">
+        <AnalyticsProvider />
+        <ThemePullCord />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
