@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
-const sansFont = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const serifFont = Playfair_Display({
+const serifFont = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  display: "swap",
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
+  display: "swap",
+});
+
+const sansFont = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Hesics | High-Trust GrowthSites For Market Leaders",
+  title: "HESICS — Make It Simple | Sovereign Digital Infrastructure",
   description:
-    "Your Business Deserves to Be Trusted Before the First Meeting Even Starts. The exact way to win tenders, win leads, and work even while you sleep.",
+    "Your Business Deserves to Be Trusted Before the First Meeting Even Starts. The Exact way to wins tenders, wins leads, and works even while you sleep.",
 };
 
 export default function RootLayout({
@@ -29,11 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sansFont.variable} ${serifFont.variable} dark scroll-smooth`}>
-      <body className="bg-[#040405] text-[#ffffff] font-sans antialiased selection:bg-[#0c745d] selection:text-white">
+    <html lang="en" className={`${serifFont.variable} ${sansFont.variable} dark scroll-smooth`}>
+      <body className="bg-[#030303] text-[#F4F4F4] font-sans antialiased selection:bg-[#00A982]/30 selection:text-white">
         {children}
       </body>
     </html>
   );
 }
-

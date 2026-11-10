@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MessageCircle, ArrowUpRight, CheckCheck } from "lucide-react";
+import { MessageCircle, ArrowUpRight } from "lucide-react";
 
 export default function WhatsAppCTA() {
   const [isHovered, setIsHovered] = useState(false);
@@ -12,50 +12,39 @@ export default function WhatsAppCTA() {
   return (
     <aside
       aria-label="Direct WhatsApp Contact"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 select-none"
+      className="fixed bottom-7 right-7 z-50 flex items-center gap-3 select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Tooltip / Quick Status Pill */}
       <div
-        className={`hidden sm:flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-[#08090a]/95 border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-300 ${
+        className={`hidden sm:flex items-center gap-2.5 px-4 py-2 rounded-full glass border border-white/10 text-xs font-mono text-[#A0A0A0] shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-all duration-300 ${
           isHovered
             ? "opacity-100 translate-x-0 pointer-events-auto"
             : "opacity-0 translate-x-2 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#25D366] shadow-[0_0_8px_#25D366]" />
-            <span className="text-xs font-bold text-white tracking-wide">
-              Chat Directly on WhatsApp
-            </span>
-          </div>
-          <div className="flex items-center gap-1 text-[11px] text-slate-400 font-mono mt-0.5">
-            <CheckCheck className="w-3.5 h-3.5 text-[#25D366]" />
-            <span>+91 7867999298 • Active Now</span>
-          </div>
-        </div>
+        <span className="w-1.5 h-1.5 rounded-full bg-[#00A982] shadow-[0_0_6px_#00A982]" />
+        <span>+91 7867999298</span>
+        <span className="text-white/30">•</span>
+        <span className="text-white font-sans font-medium">Chat Directly</span>
       </div>
 
-      {/* Main WhatsApp Floating Action Button */}
+      {/* Circular Glass WhatsApp Button Matching Reference Image */}
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Hesics on WhatsApp: +91 7867999298"
-        className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-[#08090a] border border-white/15 text-white shadow-[0_10px_40px_rgba(0,0,0,0.9)] hover:scale-105 hover:border-[#25D366]/80 transition-all duration-300"
+        className="group relative flex items-center justify-center w-12 h-12 rounded-full glass border border-white/15 text-white shadow-[0_10px_40px_rgba(0,0,0,0.9)] hover:border-white/30 hover:scale-105 transition-luxury active:scale-95"
       >
-        {/* Pulsing Aura */}
-        <span className="absolute -inset-1 rounded-full bg-[#25D366]/25 blur-sm opacity-75 group-hover:opacity-100 animate-pulse" />
+        {/* Subtle Ambient Refraction */}
+        <div className="absolute inset-0 rounded-full bg-white/[0.03] group-hover:bg-white/[0.08] transition-colors" />
 
-        {/* Outer Ring Laser on Hover */}
-        <div className="absolute inset-0 rounded-full border border-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity" />
-
-        {/* WhatsApp Brand Icon (Clean SVG for authentic sharpness) */}
-        <div className="relative z-10 flex items-center justify-center w-11 h-11 rounded-full bg-[#25D366] text-white shadow-[0_0_20px_rgba(37,211,102,0.4)]">
+        {/* WhatsApp Icon */}
+        <div className="relative z-10 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
           <svg
-            className="w-6 h-6 fill-white"
+            className="w-5 h-5 fill-white opacity-95 group-hover:opacity-100"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -63,10 +52,10 @@ export default function WhatsAppCTA() {
           </svg>
         </div>
 
-        {/* Small Online Indicator Dot */}
-        <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#25D366] border-2 border-[#040405]"></span>
+        {/* Tiny Emerald Indicator Dot (Refined Surgical Accent) */}
+        <span className="absolute -top-0.5 -right-0.5 flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00A982] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00A982] border-2 border-[#030303]"></span>
         </span>
       </a>
     </aside>

@@ -48,45 +48,45 @@ export default function AuthorityPillars() {
               key={pillar.id}
               onMouseEnter={() => setActiveCard(pillar.id)}
               onMouseLeave={() => setActiveCard(null)}
-              className={`group relative p-7 rounded-3xl bg-[#08090a]/90 border transition-all duration-300 flex flex-col justify-between ${
+              className={`group relative p-8 rounded-3xl glass transition-luxury flex flex-col justify-between ${
                 isActive
-                  ? "border-white/30 bg-[#0d1013] -translate-y-1.5 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
-                  : "border-white/10 hover:border-white/20"
+                  ? "border-white/25 -translate-y-1 shadow-[0_25px_60px_rgba(0,0,0,0.9)]"
+                  : "hover:border-white/20"
               }`}
             >
               {/* Top Row */}
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white group-hover:scale-105 transition-transform duration-300">
-                    <Icon className="w-5 h-5 text-white" />
+                  <div className="w-11 h-11 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-[#F4F4F4] group-hover:scale-105 transition-transform duration-300">
+                    <Icon className="w-5 h-5 text-[#F4F4F4]" />
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0c745d]" />
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-slate-400 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00A982]" />
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#A0A0A0] font-semibold">
                       {pillar.tag}
                     </span>
                   </div>
                 </div>
 
                 {/* Pillar Title */}
-                <h2 className="text-2xl font-bold tracking-tight text-white mb-3">
+                <h2 className="font-serif text-2xl font-normal tracking-tight text-[#F4F4F4] mb-3">
                   {pillar.title}
                 </h2>
 
                 {/* Description */}
-                <p className="text-sm text-slate-400 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-[#A0A0A0] leading-relaxed font-normal">
                   {pillar.description}
                 </p>
               </div>
 
               {/* Bottom Action Indicator */}
-              <div className="mt-8 pt-5 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono font-medium text-slate-400 group-hover:text-white transition-colors">
+              <div className="mt-8 pt-5 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono font-medium text-[#656565] group-hover:text-[#F4F4F4] transition-colors">
                 <span>{pillar.action}</span>
-                <ArrowRight className="w-4 h-4 text-[#0c745d] group-hover:translate-x-1 transition-transform duration-200" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#A0A0A0] group-hover:translate-x-1 group-hover:text-white transition-transform duration-200" />
               </div>
 
-              {/* Subtle Ambient Laser Border on Hover */}
-              <div className="absolute inset-0 rounded-3xl border border-[#0c745d]/40 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300" />
+              {/* Delicate Silver Inner Edge Reflection */}
+              <div className="absolute inset-0 rounded-3xl border border-white/[0.06] opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300" />
             </div>
           );
         })}

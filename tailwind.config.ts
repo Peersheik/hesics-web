@@ -10,35 +10,26 @@ const config: Config = {
     extend: {
       colors: {
         hesics: {
-          black: "#040405",
-          dark: "#08090a",
-          surface: "#0e1012",
-          card: "#121517",
-          border: "rgba(12, 116, 93, 0.2)",
-          emerald: "#0c745d",
-          "emerald-light": "#159c7e",
-          "emerald-dark": "#07483a",
-          mint: "#a2dbcb",
-          white: "#ffffff",
-          muted: "#94a3b8",
+          bg: "#030303",
+          secondary: "#080808",
+          surface: "rgba(255, 255, 255, 0.025)",
+          border: "rgba(255, 255, 255, 0.10)",
+          primary: "#F4F4F4",
+          subtext: "#A0A0A0",
+          muted: "#656565",
+          accent: "#00A982",
+          white: "#FFFFFF",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "Manrope", "Inter", "system-ui", "sans-serif"],
       },
-      backgroundImage: {
-        "emerald-gradient-down": "linear-gradient(180deg, #0c745d 0%, #040405 100%)",
-        "emerald-gradient-light": "linear-gradient(180deg, #0c745d 0%, #a2dbcb 50%, #ffffff 100%)",
-        "radial-emerald": "radial-gradient(circle at 50% 30%, rgba(12, 116, 93, 0.25) 0%, rgba(4, 4, 5, 0.95) 75%)",
-      },
-      boxShadow: {
-        "emerald-glow": "0 0 50px -10px rgba(12, 116, 93, 0.4)",
-        "emerald-glow-lg": "0 0 100px -20px rgba(12, 116, 93, 0.5)",
+      transitionTimingFunction: {
+        luxury: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },
   plugins: [],
 };
 export default config;
-
