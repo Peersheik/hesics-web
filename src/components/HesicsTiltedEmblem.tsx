@@ -246,3 +246,4 @@ export default function HesicsTiltedEmblem({ className = "", size = 260 }: Hesic
     </div>
   );
 }
+

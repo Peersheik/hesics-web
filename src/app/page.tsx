@@ -1,15 +1,12 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#040405] text-white flex flex-col selection:bg-[#0c745d] selection:text-white relative">
+    <main className="h-screen w-screen overflow-hidden bg-[#030303] text-[#F4F4F4] select-none relative">
       <Navbar />
       <Hero />
-      {/* Floating WhatsApp CTA in bottom right corner */}
-      <WhatsAppCTA />
     </main>
   );
 }
