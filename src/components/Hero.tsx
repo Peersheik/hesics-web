@@ -81,8 +81,8 @@ export default function Hero() {
               onClick={handleScrollDown}
               className="group flex items-center gap-2 px-5 py-2.5 rounded-full text-[11px] font-mono uppercase tracking-widest text-[#A0A0A0] hover:text-white transition-colors cursor-pointer"
             >
-              <span>VIEW CLIENT PROOF</span>
-              <ArrowDown className="w-3 h-3 group-hover:translate-y-0.5 transition-transform duration-200 text-[#656565] group-hover:text-white" />
+              <span>VIEW ALL CHANNELS</span>
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200 text-[#656565] group-hover:text-white" />
             </button>
           </div>
         </div>

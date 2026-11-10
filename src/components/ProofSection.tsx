@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { ArrowUpRight, Lock, ExternalLink, ShieldCheck, Globe, Sparkles } from "lucide-react";
+import SocialConnectBar from "./SocialConnectBar";
 
 interface ProofProject {
   id: string;
@@ -246,6 +247,20 @@ export default function ProofSection() {
             <span>Commission a System</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
+        </div>
+
+        {/* Official Channels & Direct Network */}
+        <div id="channels-section" className="mt-20 pt-16 border-t border-white/[0.08]">
+          <SocialConnectBar />
+        </div>
+
+        {/* Minimal Footer */}
+        <div className="mt-20 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-[#656565]">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00A982]" />
+            <span>HESICS • SOVEREIGN DIGITAL INFRASTRUCTURE</span>
+          </div>
+          <div>© {new Date().getFullYear()} HESICS. ALL RIGHTS RESERVED.</div>
         </div>
       </div>
     </section>
