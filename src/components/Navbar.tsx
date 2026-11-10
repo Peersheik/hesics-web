@@ -2,9 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import { Instagram, Linkedin, Youtube, MessageCircle, ArrowUpRight } from "lucide-react";
 import CyberButton from "./ui/CyberButton";
 
 export default function Navbar() {
+  const whatsappUrl = "https://wa.me/917867999298?text=Hello%20Hesics%2C%20I%20would%20like%20to%20schedule%20a%20briefing.";
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-14 py-4 backdrop-blur-2xl bg-[#040405]/80 border-b border-white/[0.08]">
       {/* Official Hesics Brand Mark */}
@@ -13,9 +16,9 @@ export default function Navbar() {
           <Image
             src="/hesics-emblem-silver.png"
             alt="Hesics Official Emblem"
-            width={32}
-            height={32}
-            className="object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] group-hover:scale-105 transition-transform duration-300"
+            width={30}
+            height={30}
+            className="object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] group-hover:scale-105 transition-transform duration-300"
             priority
           />
         </div>
@@ -31,27 +34,50 @@ export default function Navbar() {
         </div>
       </a>
 
-      {/* Center Navigation Matrix */}
-      <nav className="hidden lg:flex items-center gap-9 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-        <a href="#premise" className="hover:text-white transition-colors duration-200">
-          The Trust Equation
+      {/* Official Social Platform Links */}
+      <div className="hidden md:flex items-center gap-6">
+        <a
+          href="https://www.instagram.com/hesics__/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors"
+        >
+          <Instagram className="w-3.5 h-3.5 text-slate-400" />
+          <span>Instagram</span>
+          <ArrowUpRight className="w-3 h-3 text-slate-500" />
         </a>
-        <a href="#tenders" className="hover:text-white transition-colors duration-200">
-          Tenders & Pipelines
-        </a>
-        <a href="#console" className="hover:text-white transition-colors duration-200 flex items-center gap-2">
-          <span>Authority Engine</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#0c745d] animate-pulse" />
-        </a>
-        <a href="#case-studies" className="hover:text-white transition-colors duration-200">
-          Portfolio
-        </a>
-      </nav>
 
-      {/* Custom Action CyberButton */}
+        <a
+          href="https://www.linkedin.com/company/143572934/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors"
+        >
+          <Linkedin className="w-3.5 h-3.5 text-slate-400" />
+          <span>LinkedIn</span>
+          <ArrowUpRight className="w-3 h-3 text-slate-500" />
+        </a>
+
+        <a
+          href="https://www.youtube.com/@peer_sheik_mydeen"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors"
+        >
+          <Youtube className="w-3.5 h-3.5 text-slate-400" />
+          <span>YouTube</span>
+          <ArrowUpRight className="w-3 h-3 text-slate-500" />
+        </a>
+      </div>
+
+      {/* Primary Action Button (Direct WhatsApp Briefing Link) */}
       <div className="flex items-center gap-4">
-        <CyberButton href="#contact" variant="primary" className="!py-2.5 !px-5">
-          Schedule Briefing
+        <CyberButton
+          href={whatsappUrl}
+          variant="primary"
+          className="!py-2.5 !px-5"
+        >
+          Connect on WhatsApp
         </CyberButton>
       </div>
     </header>

@@ -114,3 +114,4 @@ export default function CyberButton({
 
   return <button onClick={onClick}>{Content}</button>;
 }
+
