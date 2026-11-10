@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hesics-white: #ffffff;
+  --hesics-black: #040405;
+  --hesics-emerald: #0c745d;
+  --hesics-emerald-light: #159c7e;
+  --hesics-mint: #a2dbcb;
+}
+
+body {
+  background-color: #040405;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Glassmorphism */
+.glass-surface {
+  background: rgba(10, 13, 14, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(12, 116, 93, 0.28);
+}
+
+.glass-pill {
+  background: rgba(12, 116, 93, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(12, 116, 93, 0.4);
+}
+
+.glass-surface-hover:hover {
+  border-color: rgba(12, 116, 93, 0.55);
+  box-shadow: 0 0 35px -5px rgba(12, 116, 93, 0.35);
+}
+
+/* Custom Hesics Gradients */
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #a2dbcb 0%, #159c7e 50%, #0c745d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-white-emerald {
+  background: linear-gradient(180deg, #ffffff 40%, #a2dbcb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-emerald-vertical {
+  background: linear-gradient(180deg, #0c745d 0%, #040405 100%);
+}
+
+.gradient-emerald-light {
+  background: linear-gradient(180deg, #0c745d 0%, #a2dbcb 60%, #ffffff 100%);
+}
+
+/* Precision grid texture */
+.bg-grid-pattern {
+  background-size: 56px 56px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
